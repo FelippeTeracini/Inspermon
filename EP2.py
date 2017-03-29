@@ -18,8 +18,10 @@ while True:
 			break
 # Inspermon adversário:
 		elif comando == "passear":   # Passear em busca de novos inspermons
-			x=random.randint(0,len(lista_de_inspermons))   # Escolha aleatória do inspermon adversário
-			print("Voce esta batalhando contra {}".format(x))  
+			n_oponente=random.randint(0,len(lista_de_inspermons))   # Escolha aleatória do inspermon adversário
+			nome_oponente=lista_de_inspermons[n_oponente]
+
+			print("Voce esta batalhando contra {}".format(nome_oponente))  
 
 			ataque_oponente=random.randint(defesa+1,defesa+5)  # Definição aleatória do atributos do Inspermon adversário
 			defesa_oponente=random.randint(0,ataque1-1)
