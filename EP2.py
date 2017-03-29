@@ -12,7 +12,7 @@ while True:
 	vida=20
 # Início do jogo:
 	while True:  # Jogo
-		comando = input("Oque você deseja fazer? ")  # Pergunta sobre o que o usuário deseja fazer
+		comando = input("O que você deseja fazer? (passear ou dormir")  # Pergunta sobre o que o usuário deseja fazer
 
 		if comando == "dormir":   # Dormir: para o jogo e salva os dados
 			break
@@ -34,27 +34,38 @@ while True:
 				ataque_ativo=int(input("Qual ataque deseja usar? "))  # Escolha do ataque a ser utilizado
 
 				if ataque_ativo == 1:  # Ataque 1 é o ataque do inspermon igual a seu atributo
-						
+					if ataque1-defesa_oponente>0:
 						vida_oponente=vida_oponente-(ataque1-defesa_oponente)
 
 						if vida_oponente>0:  # Realização do ataque e atualização da vida restante
-							print("{} deu {} de dano no seu oponente, agora ele tem {} de vida".format(nome,ataque1-defesa_oponente,vida_oponente))  # Cálculo da vida restante
+							print("{} deu {} de dano em seu oponente, agora ele tem {} de vida".format(nome,ataque1-defesa_oponente,vida_oponente))  # Cálculo da vida restante
 							continue
 
-						else:
-							print("Voce derrotou esse Inspermon!")
-							break
-
-				elif ataque_ativo == 2:
-					ataque2=random.randint(1,10)
-					vida_oponente=vida_oponente-(ataque2-defesa_oponente)
-					if vida_oponente>0:
-						print("{} deu {} de dano no seu oponente, agora ele tem {} de vida".format(nome,ataque2-defesa_oponente,vida_oponente))
+					if ataque1-defesa_oponente<=0:
+						print("{} não deu dano em seu oponente, ele continua com {} de vida".format(nome,vida_oponente))
 						continue
-					else:
+
+					if vida_oponente<=0:
 						print("Voce derrotou esse Inspermon!")
 						break
 
+				elif ataque_ativo == 2:
+					ataque2=random.randint(1,10)
+
+					if ataque2-defesa_oponente>0:
+						vida_oponente=vida_oponente-(ataque2-defesa_oponente)
+
+						if vida_oponente>0:  # Realização do ataque e atualização da vida restante
+							print("{} deu {} de dano em seu oponente, agora ele tem {} de vida".format(nome,ataque2-defesa_oponente,vida_oponente))  # Cálculo da vida restante
+							continue
+
+					if ataque2-defesa_oponente<=0:
+						print("{} não deu dano em seu oponente, ele continua com {} de vida".format(nome,vida_oponente))
+						continue
+
+					if vida_oponente<=0:
+						print("Voce derrotou esse Inspermon!")
+						break
 				else:
 					print("Digite um ataque valido!")
 					continue
@@ -64,6 +75,6 @@ while True:
 		else:
 			print("Digite um comando válido.")
 
-	print("Ate a proxima!")
+	print("Até a proxima!")
 
 	continue
