@@ -38,10 +38,14 @@ while True:
 					if ação == "fugir":
 						chancefugir=random.randint(1,3)  # Sorte de fuga
 						if chancefugir==3:
-							print("Você conseguiu fuigr") # Fuga com sucesso
+
+							print("Você conseguiu fugir!")  # Fuga com sucesso
+							x=1 # X
 							break
 						else:
-							print("Você não conseguiu fugir")  # Fuga sem sucesso
+							print("Você não conseguiu fugir!")  # Fuga sem sucesso
+							x=2
+							break
 
 					if ação == "atacar": # Ataque
 
@@ -85,19 +89,22 @@ while True:
 							print("Digite um ataque valido!")
 							continue
 
-				print("É a vez do seu oponente!")
+				if x==2:  # X para fuga sem sucesso
+					print("É a vez do seu oponente!")
 
-				if ataque_oponente-defesa>0:
-					vida=vida-(ataque_oponente-defesa)
-					if vida>0:
-						print("O oponente deu {} de dano em {}! Agora ele tem {} de vida".format(ataque_oponente-defesa,nome,vida))
-						continue
-				if ataque_oponente-defesa<=0:
-					print("O oponente nao deu dano em seu Inspermon, ele continua com {} de vida".format(vida))
-					continue
-				if vida<=0:
-					print("Seu Inspermon desmaiou e foi levado para o InsperCenter")
-					vida=20
+					if ataque_oponente-defesa>0:  # Ataque do oponente após tentativa de fuga
+						vida=vida-(ataque_oponente-defesa)
+						if vida>0:
+							print("O oponente deu {} de dano em {}! Agora ele tem {} de vida".format(ataque_oponente-defesa,nome,vida))
+							continue
+
+					if vida<=0:  # Derrota do seu inspermon
+						print("Seu Inspermon desmaiou e foi levado para o InsperCenter")
+						vida=20
+						break
+
+				elif x==1:  # X para fuga com sucesso/parada do loop de batalha
+					x=2
 					break
 
 			continue
