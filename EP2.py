@@ -35,7 +35,7 @@ while True:
 			while True:
 
 				while True:
-
+					x=2
 					ação=input("O que você deseja fazer? (Atacar ou Fugir): ")   # Pergunta se deseja atacar ou fugir
 					if ação == "fugir":
 						chancefugir=random.randint(1,3)  # Sorte de fuga
