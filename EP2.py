@@ -68,7 +68,9 @@ while True:
 						ataque_ativo=int(input("Qual ataque deseja usar? 1 ou 2: "))  # Escolha do ataque a ser utilizado
 						
 						if ataque_ativo == 1:  # Ataque 1 é o ataque do inspermon igual a seu atributo
-
+							critico=random.randint(1,5)
+							if critico==1:
+								ataque1=ataque1*2
 							if ataque1-defesa_oponente>0: # Verifica se o inspermon causou dano no adverário
 								vida_oponente=vida_oponente-(ataque1-defesa_oponente)
 
