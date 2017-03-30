@@ -3,7 +3,7 @@ import time
 
 while True:
 
-	lista_de_inspermons=["Hsumon","Diegomon","Hsumon","Teramon"]  # Criação dos Inspermons
+	lista_de_inspermons=open("Inspermons", "r")  # Criação dos Inspermons
 
 	print("Bem vindo ao Inspermón")  # Início do jogo
 
@@ -27,7 +27,7 @@ while True:
 
 			time.sleep(1) 
 
-			print("Você encontrou um Inspermon")  # Encontro com um inspermon			
+			'''print("Você encontrou um Inspermon")  # Encontro com um inspermon			
 			n_oponente=random.randint(0,len(lista_de_inspermons))   # Escolha aleatória do inspermon adversário
 			nome_oponente=lista_de_inspermons[n_oponente-1]
 			time.sleep(1)
@@ -37,7 +37,11 @@ while True:
 			ataque_oponente=random.randint(defesa+1,defesa+5)  # Definição aleatória do atributos do Inspermon adversário
 			defesa_oponente=random.randint(0,ataque1-1)
 			vida_oponente=random.randint(10,20)
-			time.sleep(1)
+			time.sleep(1)'''
+
+			print("Você encontrou um Inspermon")
+			oponente=randon.randit(0,len(lista_de_inspermons))
+			
 
 			print("Este Inspermón possui os seguintes atributos: {} de ataque, {} de defesa e {} de vida" .format (ataque_oponente, defesa_oponente, vida_oponente))
 			time.sleep(1)
@@ -56,7 +60,7 @@ while True:
 					ação=input("O que você deseja fazer? (Atacar ou Fugir): ")   # Pergunta se deseja atacar ou fugir
 
 					if ação == "fugir":
-						chancefugir=random.randint(1,3)  # Sorte de fuga
+						chancefugir=random.randit(1,2)  # Sorte de fuga
 
 						if chancefugir==3:
 							time.sleep(0.5)
@@ -88,7 +92,7 @@ while True:
 								print("{} deu {} de dano em seu oponente, agora ele tem {} de vida".format(nome,ataque1-defesa_oponente,vida_oponente))  # Cálculo da vida restante
 								time.sleep(0.5)
 								break 
-								
+
 							if vida_oponente<=0:    # Fim da batalha, vitória
 								print("Voce derrotou esse Inspermon!")
 								time.sleep(0.5)
