@@ -1,2 +1,6 @@
-Inspermons={"Pikaxu":{"ataque":3,"defesa":2,"vida":18},"Sharmander":{"ataque":5,"defesa":2,"vida":12},"Skuirtle":{"ataque":2,"defesa":5,"vida":15},"Bubatauro":{"ataque":3,"defesa":4,"vida":10},"Magipark":{"ataque":1,"defesa":1,"vida":20}}
-print(Inspermons["Sharmander"])
+import pickle
+
+Inspermons_noobs={"Pikaxu":{"ataque":3,"defesa":2,"vida":18},"Tatata":{"ataque":5,"defesa":2,"vida":12},"Pigey":{"ataque":2,"defesa":1,"vida":15},"Dogerpie":{"ataque":3,"defesa":4,"vida":10},"Magipark":{"ataque":1,"defesa":1,"vida":20}}
+
+with open("inspermons_noobs.pickle","wb") as arquivo_inspermons_noobs:
+	pickle.dump(Inspermons_noobs,arquivo_inspermons_noobs)

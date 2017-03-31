@@ -1,17 +1,66 @@
 import random
 import time
+import pickle
 def batalha(x,y,z):
 				return x-y+z
+
+with open("inspermons_noobs.pickle","rb") as arquivo_inspermons_noobs:
+		dicionario_inspermons=pickle.load(arquivo_inspermons_noobs)
+
+with open("inspermons_iniciais.pickle","rb") as arquivo_inspermons_iniciais:
+		dicionario_inspermons_iniciais=pickle.load(arquivo_inspermons_iniciais)
+
 while True:
 
-	lista_de_inspermons=open("Inspermons", "r")  # Criação dos Inspermons
+	while True:
+		print("Bem vindo ao Inspermón")  # Início do jogo
+		time.sleep(0.5)
+		print("Com qual Inspermón você deseja iniciar?")
+		time.sleep(0.5)
+		print("- Sharmander: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Sharmander"]["ataque"],dicionario_inspermons_iniciais["Sharmander"]["defesa"],dicionario_inspermons_iniciais["Sharmander"]["vida"]))
+		print("- Skuirtle: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Skuirtle"]["ataque"],dicionario_inspermons_iniciais["Skuirtle"]["defesa"],dicionario_inspermons_iniciais["Skuirtle"]["vida"]))
+		print("- Bubatauro: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Bubatauro"]["ataque"],dicionario_inspermons_iniciais["Bubatauro"]["defesa"],dicionario_inspermons_iniciais["Bubatauro"]["vida"]))
+		inspermon_inicial=input("->")
+		inspermon_inicial.lower()
+		if inspermon_inicial == "sharmander":
+			ataque1=dicionario_inspermons_iniciais["Sharmander"]["ataque"]
+			defesa=dicionario_inspermons_iniciais["Sharmander"]["defesa"]
+			vida=dicionario_inspermons_iniciais["Sharmander"]["vida"]
+			nome="Sharmander"
+			break
+		elif inspermon_inicial == "skuirtle":
+			ataque1=dicionario_inspermons_iniciais["Skuirtle"]["ataque"]
+			defesa=dicionario_inspermons_iniciais["Skuirtle"]["defesa"]
+			vida=dicionario_inspermons_iniciais["Skuirtle"]["vida"]
+			nome="Skuirtle"
+			break
+		elif inspermon_inicial == "bubatauro":
+			ataque1=dicionario_inspermons_iniciais["Bubatauro"]["ataque"]
+			defesa=dicionario_inspermons_iniciais["Bubatauro"]["defesa"]
+			vida=dicionario_inspermons_iniciais["Bubatauro"]["vida"]
+			nome="Bubatauro"
+			break
+		else:
+			print("Digite um Inspermón válido")
+			continue
 
-	print("Bem vindo ao Inspermón")  # Início do jogo
 
-	nome = input("Qual o nome do seu Inspermón? ")  # Caracterização do próprio personagem
-	ataque1=5
-	defesa=5
-	vida=20
+	while True:
+		namechange = input("Deseja mudar o nome do seu Inspermón? ")  # Caracterização do próprio personagem
+		namechange.lower()
+		if namechange == "sim":
+			nome=namechange
+			print("Agora o nome do seu Inspermon é: {}".format(nome))
+			break
+		elif namechange == "nao":
+			print("O nome do seu Inspermon ainda é: {}".format(nome))
+			break
+		else:
+			print("Digite um comando válido (Sim ou Nao)")
+			break
+	time.sleep(0.5)
+	print("Seu Inspermon tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
+	time.sleep(0.5)
 
 # Início do jogo:
 	while True:  # Jogo
@@ -29,15 +78,14 @@ while True:
 			time.sleep(1) 
 
 			print("Você encontrou um Inspermon")  # Encontro com um inspermon			
-			n_oponente=random.randint(0,len(lista_de_inspermons))   # Escolha aleatória do inspermon adversário
-			nome_oponente=lista_de_inspermons[n_oponente-1]
+			nome_oponente=random.choice(list(dicionario_inspermons.keys()))   # Escolha aleatória do inspermon adversário
 			time.sleep(1)
 
 			print("Voce esta batalhando contra {}".format(nome_oponente))  
 
-			ataque_oponente=random.randint(defesa+1,defesa+5)  # Definição aleatória do atributos do Inspermon adversário
-			defesa_oponente=random.randint(0,ataque1-1)
-			vida_oponente=random.randint(10,20)
+			ataque_oponente=dicionario_inspermons[nome_oponente]["ataque"] # Definição aleatória do atributos do Inspermon adversário
+			defesa_oponente=dicionario_inspermons[nome_oponente]["defesa"]
+			vida_oponente=dicionario_inspermons[nome_oponente]["vida"]
 			time.sleep(1)
 			'''
 			print("Você encontrou um Inspermon")
@@ -74,7 +122,7 @@ while True:
 							break
 
 					if ação == "atacar": # Ataque
-						print("1- Ataque do seu Inspermon, 2- Ataque de sorte ")
+						print("1- Ataque normal, 2- Ataque de sorte ")
 						time.sleep(0.5)
 						ataque_ativo=int(input("Qual ataque deseja usar? 1 ou 2: "))  # Escolha do ataque a ser utilizado
 
@@ -85,14 +133,26 @@ while True:
 
 							if critico==1:
 								ataque1=ataque1*2
+								print("{} deu um ataque crítico".format(nome))
+								time.sleep(0.5)
 
 							if vida_oponente>0:  # Realização do ataque e atualizaçãovida_oponente= batalha_ataque1(vida_oponente,ataque1,defesa_oponente) da vida restante
 								vida_oponente= batalha(vida_oponente,ataque1,defesa_oponente)
-								print("{} deu {} de dano em seu oponente, agora ele tem {} de vida".format(nome,ataque1-defesa_oponente,vida_oponente))  # Cálculo da vida restante
-								time.sleep(0.5)
-								break 
+								if vida_oponente>0:
+									print("{} deu {} de dano em seu oponente, agora ele tem {} de vida".format(nome,ataque1-defesa_oponente,vida_oponente))  # Cálculo da vida restante
+									time.sleep(0.5)
+									break 
+								else:
+									print("{} deu {} de dano em seu oponente, agora ele tem 0 de vida".format(nome,ataque1-defesa_oponente,vida_oponente))  # Cálculo da vida restante
+									time.sleep(0.5)
+									print("Voce derrotou esse Inspermon!")
+									time.sleep(0.5)
+									x=3
+									break
 
 							if vida_oponente<=0:    # Fim da batalha, vitória
+								print("{} deu {} de dano em seu oponente, agora ele tem 0 de vida".format(nome,ataque1-defesa_oponente,vida_oponente))  # Cálculo da vida restante
+								time.sleep(0.5)
 								print("Voce derrotou esse Inspermon!")
 								time.sleep(0.5)
 								x=3
@@ -118,6 +178,8 @@ while True:
 								break
 
 							if vida_oponente<=0:  # Derrota do oponente
+								print("{} deu {} de dano em seu oponente, agora ele tem 0 de vida".format(nome,ataque1-defesa_oponente,vida_oponente))  # Cálculo da vida restante
+								time.sleep(0.5)
 								print("Voce derrotou esse Inspermon!")
 								time.sleep(0.5)
 								x=3
@@ -128,24 +190,24 @@ while True:
 							continue
 
 				if x==2:  # X para fuga sem sucesso
-					time.sleep(0.5)
-					print("É a vez do seu oponente!")
-					time.sleep(0.5)
-
-					if ataque_oponente-defesa>0:  # Ataque do oponente após tentativa de fuga
-						#if critico==1
-						#ataque_oponente=ataque_oponente*2
-						vida=vida-(ataque_oponente-defesa)
-						if vida>0:
-							print("O oponente deu {} de dano em {}! Agora ele tem {} de vida".format(ataque_oponente-defesa,nome,vida))
-							time.sleep(0.5)
-							continue
-
-					if vida<=0:  # Derrota do seu inspermon
-						print("Seu Inspermon desmaiou e foi levado para o InsperCenter")
+					if vida_oponente>0:
 						time.sleep(0.5)
-						vida=20
-						break
+						print("É a vez do seu oponente!")
+						time.sleep(0.5)
+						if ataque_oponente-defesa>0:  # Ataque do oponente após tentativa de fuga
+							#if critico==1
+							#ataque_oponente=ataque_oponente*2
+							vida=vida-(ataque_oponente-defesa)
+							if vida>0:
+								print("O oponente deu {} de dano em {}! Agora ele tem {} de vida".format(ataque_oponente-defesa,nome,vida))
+								time.sleep(0.5)
+								continue
+
+						if vida<=0:  # Derrota do seu inspermon
+							print("Seu Inspermon desmaiou e foi levado para o InsperCenter")
+							time.sleep(0.5)
+							vida=20
+							break
 
 				elif x==1 or x==3:  # X para fuga com sucesso/parada do loop de batalha
 					x=2
