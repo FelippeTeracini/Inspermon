@@ -50,10 +50,10 @@ while True:
 		namechange.lower()
 		if namechange == "sim":
 			nome=namechange
-			print("Agora o nome do seu Inspermon é: {}".format(nome))
+			print("Agora o nome do seu Inspermon é {}".format(nome))
 			break
 		elif namechange == "nao":
-			print("O nome do seu Inspermon ainda é: {}".format(nome))
+			print("O nome do seu Inspermon ainda é {}".format(nome))
 			break
 		else:
 			print("Digite um comando válido (Sim ou Nao)")
@@ -87,11 +87,7 @@ while True:
 			defesa_oponente=dicionario_inspermons[nome_oponente]["defesa"]
 			vida_oponente=dicionario_inspermons[nome_oponente]["vida"]
 			time.sleep(1)
-			'''
-			print("Você encontrou um Inspermon")
-			oponente=random.randit(0,len(lista_de_inspermons))
-			
-			'''
+
 			print("Este Inspermón possui os seguintes atributos: {} de ataque, {} de defesa e {} de vida".format(ataque_oponente,defesa_oponente,vida_oponente))
 			time.sleep(1)
 
@@ -139,11 +135,11 @@ while True:
 							if vida_oponente>0:  # Realização do ataque e atualizaçãovida_oponente= batalha_ataque1(vida_oponente,ataque1,defesa_oponente) da vida restante
 								vida_oponente= batalha(vida_oponente,ataque1,defesa_oponente)
 								if vida_oponente>0:
-									print("{} deu {} de dano em seu oponente, agora ele tem {} de vida".format(nome,ataque1-defesa_oponente,vida_oponente))  # Cálculo da vida restante
+									print("{} deu {} de dano em {}, agora ele tem {} de vida".format(nome,ataque1-defesa_oponente,nome_oponente,vida_oponente))  # Cálculo da vida restante
 									time.sleep(0.5)
 									break 
 								else:
-									print("{} deu {} de dano em seu oponente, agora ele tem 0 de vida".format(nome,ataque1-defesa_oponente,vida_oponente))  # Cálculo da vida restante
+									print("{} deu {} de dano em {}, agora ele tem 0 de vida".format(nome,ataque1-defesa_oponente,nome_oponente))  # Cálculo da vida restante
 									time.sleep(0.5)
 									print("Voce derrotou esse Inspermon!")
 									time.sleep(0.5)
@@ -151,7 +147,7 @@ while True:
 									break
 
 							if vida_oponente<=0:    # Fim da batalha, vitória
-								print("{} deu {} de dano em seu oponente, agora ele tem 0 de vida".format(nome,ataque1-defesa_oponente,vida_oponente))  # Cálculo da vida restante
+								print("{} deu {} de dano em {}, agora ele tem 0 de vida".format(nome,ataque1-defesa_oponente,nome_oponente))  # Cálculo da vida restante
 								time.sleep(0.5)
 								print("Voce derrotou esse Inspermon!")
 								time.sleep(0.5)
@@ -168,17 +164,17 @@ while True:
 								vida_oponente= batalha(vida_oponente,ataque2,defesa_oponente)
 
 								if vida_oponente>0:  # Realização do ataque e atualização da vida restante
-									print("{} deu {} de dano em seu oponente, agora ele tem {} de vida".format(nome,ataque2-defesa_oponente,vida_oponente))  # Cálculo da vida restante
+									print("{} deu {} de dano em {}, agora ele tem {} de vida".format(nome,ataque2-defesa_oponente,nome_oponente,vida_oponente))  # Cálculo da vida restante
 									time.sleep(0.5)
 									break
 
 							if ataque2-defesa_oponente<=0: # Notificação de não ter dado dano algum
-								print("{} não deu dano em seu oponente, ele continua com {} de vida".format(nome,vida_oponente))
+								print("{} não deu dano em {}, ele continua com {} de vida".format(nome,nome_oponente,vida_oponente))
 								time.sleep(0.5)
 								break
 
 							if vida_oponente<=0:  # Derrota do oponente
-								print("{} deu {} de dano em seu oponente, agora ele tem 0 de vida".format(nome,ataque1-defesa_oponente,vida_oponente))  # Cálculo da vida restante
+								print("{} deu {} de dano em {}, agora ele tem 0 de vida".format(nome,ataque1-defesa_oponente,nome_oponente))  # Cálculo da vida restante
 								time.sleep(0.5)
 								print("Voce derrotou esse Inspermon!")
 								time.sleep(0.5)
@@ -199,7 +195,7 @@ while True:
 							#ataque_oponente=ataque_oponente*2
 							vida=vida-(ataque_oponente-defesa)
 							if vida>0:
-								print("O oponente deu {} de dano em {}! Agora ele tem {} de vida".format(ataque_oponente-defesa,nome,vida))
+								print("{} deu {} de dano em {}! Agora ele tem {} de vida".format(nome_oponente,ataque_oponente-defesa,nome,vida))
 								time.sleep(0.5)
 								continue
 
