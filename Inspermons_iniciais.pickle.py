@@ -7,7 +7,7 @@ Inspermons_iniciais={
 	"Skuirtle":{
 		"ataque":3,"defesa":5,"vida":10
 	},
-	"Bubatauro":{
+	"Bulbatauro":{
 		"ataque":3,"defesa":3,"vida":20
 	}
 }
