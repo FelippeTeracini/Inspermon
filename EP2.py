@@ -24,8 +24,8 @@ while True:
 		print("- Bulbatauro: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Bubatauro"]["ataque"],dicionario_inspermons_iniciais["Bubatauro"]["defesa"],dicionario_inspermons_iniciais["Bubatauro"]["vida"]))
 		time.sleep(0.5)	
 
-		inspermon_inicial=input("->")
-		inspermon_inicial.lower()
+		inspermon_inicial = input("->")
+		inspermon_inicial = inspermon_inicial.lower()
 
 		if inspermon_inicial == "sharmander":
 			ataque1=dicionario_inspermons_iniciais["Sharmander"]["ataque"]
@@ -54,7 +54,7 @@ while True:
 	while True:
 		time.sleep(0.5)
 		namechange = input("Deseja mudar o nome do seu Inspermón? ")  # Caracterização do próprio personagem
-		namechange.lower()
+		namechange = namechange.lower()
 
 		time.sleep(0.5)
 		if namechange == "sim" or namechange == "s":
