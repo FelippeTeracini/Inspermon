@@ -10,6 +10,8 @@ with open("inspermons_noobs.pickle","rb") as arquivo_inspermons_noobs:
 with open("inspermons_iniciais.pickle","rb") as arquivo_inspermons_iniciais:
 		dicionario_inspermons_iniciais=pickle.load(arquivo_inspermons_iniciais)
 
+xp = 0
+
 while True:
 	print("Bem vindo ao Inspermón")  # Início do jogo
 	time.sleep(0.5)
@@ -154,6 +156,10 @@ while True:
 										time.sleep(0.5)
 										print("Voce derrotou {}!" .format(nome_oponente))
 										time.sleep(0.5)
+										xp_ganho = 10
+										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
+										time.sleep(0.5)
+										xp = xp + xp_ganho
 										ataque1=ataque1/2
 										x=3
 										break
@@ -172,6 +178,10 @@ while True:
 										time.sleep(0.5)
 										print("Voce derrotou {}!" .format(nome_oponente))
 										time.sleep(0.5)
+										xp_ganho = 10
+										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
+										time.sleep(0.5)
+										xp = xp + xp_ganho
 										x=3
 										break
 
@@ -199,6 +209,10 @@ while True:
 										time.sleep(0.5)
 										print("Voce derrotou {}!" .format(nome_oponente))
 										time.sleep(0.5)
+										xp_ganho = 10
+										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
+										time.sleep(0.5)
+										xp = xp + xp_ganho
 										ataque2=ataque2/2
 										x=3
 										break
@@ -217,6 +231,10 @@ while True:
 										time.sleep(0.5)
 										print("Voce derrotou {}!" .format(nome_oponente))
 										time.sleep(0.5)
+										xp_ganho = 10
+										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
+										time.sleep(0.5)
+										xp = xp + xp_ganho
 										x=3
 										break
 
@@ -242,6 +260,10 @@ while True:
 								time.sleep(0.5)
 								print("Voce derrotou {}!" .format(nome_oponente))
 								time.sleep(0.5)
+								xp_ganho = 10
+								print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
+								time.sleep(0.5)
+								xp = xp + xp_ganho
 								x=3
 								break
 
@@ -260,7 +282,7 @@ while True:
 						print("É a vez do seu oponente!")
 						time.sleep(0.5)
 
-						critico_oponente=1
+						critico_oponente = random.randint(0,5)
 
 						if critico_oponente==1:
 							print("ATAQUE CRÍTICO")
