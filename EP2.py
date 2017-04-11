@@ -10,6 +10,8 @@ with open("inspermons_noobs.pickle","rb") as arquivo_inspermons_noobs:
 with open("inspermons_iniciais.pickle","rb") as arquivo_inspermons_iniciais:
 		dicionario_inspermons_iniciais=pickle.load(arquivo_inspermons_iniciais)
 
+xp = 0
+
 while True:
 	print("Bem vindo ao Inspermón")  # Início do jogo
 	time.sleep(0.5)
@@ -24,8 +26,10 @@ while True:
 		print("- Bulbatauro: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Bubatauro"]["ataque"],dicionario_inspermons_iniciais["Bubatauro"]["defesa"],dicionario_inspermons_iniciais["Bubatauro"]["vida"]))
 		time.sleep(0.5)	
 
-		inspermon_inicial=input("->")
-		inspermon_inicial.lower() #não funcionou precisa arrumar
+
+		inspermon_inicial = input("->")
+		inspermon_inicial = inspermon_inicial.lower()
+
 
 		if inspermon_inicial == "sharmander":
 			ataque1=dicionario_inspermons_iniciais["Sharmander"]["ataque"]
@@ -54,14 +58,17 @@ while True:
 	while True:
 		time.sleep(0.5)
 		namechange = input("Deseja mudar o nome do seu Inspermón? ")  # Caracterização do próprio personagem
-		namechange.lower()#não funcionou precisa arrumar
+		namechange = namechange.lower()
+
 
 		time.sleep(0.5)
 		if namechange == "sim" or namechange == "s":
 			nome=input("Qual será o nome do seu Inspermón? ")
 			print("Agora o nome do seu Inspermón é {}".format(nome))
 			break
+<<<<<<< HEAD
 		elif namechange == "nao" or namechange == "n" or namechange == "não":
+
 			print("O nome do seu Inspermón ainda é {}".format(nome))
 			break
 		else:
@@ -154,6 +161,10 @@ while True:
 										time.sleep(0.5)
 										print("Voce derrotou {}!" .format(nome_oponente))
 										time.sleep(0.5)
+										xp_ganho = 10
+										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
+										time.sleep(0.5)
+										xp = xp + xp_ganho
 										ataque1=ataque1/2
 										x=3
 										break
@@ -171,7 +182,13 @@ while True:
 										print("{} deu {} de dano em {}, ele desmaiou".format(nome,ataque1-defesa_oponente,nome_oponente))  # Cálculo da vida restante
 										time.sleep(0.5)
 										print("Voce derrotou {}!" .format(nome_oponente))
+
 										time.sleep(0.5)
+										xp_ganho = 10
+										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
+
+										time.sleep(0.5)
+										xp = xp + xp_ganho
 										x=3
 										break
 
@@ -199,6 +216,10 @@ while True:
 										time.sleep(0.5)
 										print("Voce derrotou {}!" .format(nome_oponente))
 										time.sleep(0.5)
+										xp_ganho = 10
+										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
+										time.sleep(0.5)
+										xp = xp + xp_ganho
 										ataque2=ataque2/2
 										x=3
 										break
@@ -216,7 +237,13 @@ while True:
 										print("{} deu {} de dano em {}, ele desmaiou".format(nome,ataque2-defesa_oponente,nome_oponente))  # Cálculo da vida restante
 										time.sleep(0.5)
 										print("Voce derrotou {}!" .format(nome_oponente))
+
 										time.sleep(0.5)
+										xp_ganho = 10
+										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
+
+										time.sleep(0.5)
+										xp = xp + xp_ganho
 										x=3
 										break
 
@@ -242,10 +269,15 @@ while True:
 								time.sleep(0.5)
 								print("Voce derrotou {}!" .format(nome_oponente))
 								time.sleep(0.5)
+								xp_ganho = 10
+								print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
+								time.sleep(0.5)
+								xp = xp + xp_ganho
 								x=3
 								break
 
-						else: # Erro de digitação			#não funcionou precisa arrumar
+						else: # Erro de digitação
+
 							print("Digite um ataque válido!")
 							time.sleep(0.5)
 							continue
@@ -260,7 +292,7 @@ while True:
 						print("É a vez do seu oponente!")
 						time.sleep(0.5)
 
-						critico_oponente=random.randint(1,5)
+						critico_oponente = random.randint(0,5)
 
 						if critico_oponente==1:
 							print("ATAQUE CRÍTICO")
