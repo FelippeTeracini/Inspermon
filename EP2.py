@@ -30,6 +30,15 @@ while True:
 		inspermon_inicial = input("->")
 		inspermon_inicial = inspermon_inicial.lower()
 
+		'''def pokemon_inicial(pokemon):
+			ataque1=dicionario_inspermons_iniciais["pokemon"]["ataque"]
+			defesa=dicionario_inspermons_iniciais["pokemon"]["defesa"]
+			vida=dicionario_inspermons_iniciais["pokemon"]["vida"]
+			nome=pokemon.title()
+
+
+		if inspermon_inicial == "sharmander":
+			pokemon_inicial(sharmander)'''
 
 		if inspermon_inicial == "sharmander":
 			ataque1=dicionario_inspermons_iniciais["Sharmander"]["ataque"]
@@ -37,7 +46,7 @@ while True:
 			vida=dicionario_inspermons_iniciais["Sharmander"]["vida"]
 			nome="Sharmander"
 			break
-		elif inspermon_inicial == "skuirtle":
+		if inspermon_inicial == "skuirtle":
 			ataque1=dicionario_inspermons_iniciais["Skuirtle"]["ataque"]
 			defesa=dicionario_inspermons_iniciais["Skuirtle"]["defesa"]
 			vida=dicionario_inspermons_iniciais["Skuirtle"]["vida"]
@@ -66,7 +75,7 @@ while True:
 			nome=input("Qual será o nome do seu Inspermón? ")
 			print("Agora o nome do seu Inspermón é {}".format(nome))
 			break
-<<<<<<< HEAD
+
 		elif namechange == "nao" or namechange == "n" or namechange == "não":
 
 			print("O nome do seu Inspermón ainda é {}".format(nome))
