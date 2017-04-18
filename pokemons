@@ -1,4 +1,4 @@
-pokemons="pokemons": {
+pokemons= {
 	"Sharmander":{
 		"ataque":5,"defesa":2,"vida":15
 	},
@@ -81,3 +81,4 @@ pokemons="pokemons": {
 		"ataque":75,"defesa":75,"vida":100
 	}
 }
+print(pokemons)
