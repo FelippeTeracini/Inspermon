@@ -126,6 +126,10 @@ while True:
 
 				while True:
 					x=2
+					xp_ganho=10
+					def funcaoxp(xp,xp_ganho):
+						xp=xp+xp_ganho
+						return xp
 
 					ação=input("O que você deseja fazer? (Atacar ou Fugir): ")   # Pergunta se deseja atacar ou fugir
 
@@ -173,10 +177,9 @@ while True:
 										time.sleep(0.5)
 										print("Voce derrotou {}!" .format(nome_oponente))
 										time.sleep(0.5)
-										xp_ganho = 10    # Experiência recebida
-										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
+										xp=funcaoxp(xp,xp_ganho)   # Atualização da experiência										
+										print("Voce recebeu {} de experiencia, agora você tem {}".format(xp_ganho,xp))
 										time.sleep(0.5)
-										xp = xp + xp_ganho    # Atualização da experiência
 										ataque1=ataque1/2
 										x=3
 										break
@@ -196,11 +199,9 @@ while True:
 										print("Voce derrotou {}!" .format(nome_oponente))
 
 										time.sleep(0.5)
-										xp_ganho = 10    # Experiência recebida
-										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
-
+										xp=funcaoxp(xp,xp_ganho)   # Atualização da experiência										
+										print("Voce recebeu {} de experiencia, agora você tem {}".format(xp_ganho,xp))
 										time.sleep(0.5)
-										xp = xp + xp_ganho    # Atualização da experiência
 										x=3
 										break
 
@@ -228,16 +229,15 @@ while True:
 										time.sleep(0.5)
 										print("Voce derrotou {}!" .format(nome_oponente))
 										time.sleep(0.5)
-										xp_ganho = 10    # Experiência recebida
-										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
+										xp=funcaoxp(xp,xp_ganho)   # Atualização da experiência										
+										print("Voce recebeu {} de experiencia, agora você tem {}".format(xp_ganho,xp))
 										time.sleep(0.5)
-										xp = xp + xp_ganho    # Atualização da experiência
 										ataque2=ataque2/2
 										x=3
 										break
 
 							if critico!=1:
-								if vida_oponente>0:  # Realização do ataque e atualização da vida restante
+								if vida_oponente>0 and ataque2-defesa_oponente>0 :  # Realização do ataque e atualização da vida restante
 									vida_oponente= batalha(vida_oponente,ataque2,defesa_oponente)
 
 									if vida_oponente>0:
@@ -251,11 +251,9 @@ while True:
 										print("Voce derrotou {}!" .format(nome_oponente))
 
 										time.sleep(0.5)
-										xp_ganho = 10    # Experiência recebida
-										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
-
+										xp=funcaoxp(xp,xp_ganho)   # Atualização da experiência										
+										print("Voce recebeu {} de experiencia, agora você tem {}".format(xp_ganho,xp))
 										time.sleep(0.5)
-										xp = xp + xp_ganho    # Atualização da experiência
 										x=3
 										break
 
@@ -281,10 +279,9 @@ while True:
 								time.sleep(0.5)
 								print("Voce derrotou {}!" .format(nome_oponente))
 								time.sleep(0.5)
-								xp_ganho = 10    # Exepriência recebida
-								print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
+								xp=funcaoxp(xp,xp_ganho)   # Atualização da experiência										
+								print("Voce recebeu {} de experiencia, agora você tem {}".format(xp_ganho,xp))
 								time.sleep(0.5)
-								xp = xp + xp_ganho    # Atualização da experiência
 								x=3
 								break
 
