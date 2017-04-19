@@ -27,17 +27,17 @@ skuirtle = Button(root, text="Skuirtle")#, command=)
 skuirtle.grid(row=3,column=2)
 
 # fotos dos iniciais
-fotosharmander = PhotoImage(file="")
+fotosharmander = PhotoImage(file="Sharmander.png")
 sharmanderlabel = Label(root, image=fotosharmander)
-sharmanderlabel.grid(row=1)
-
-fotobulbatauro = PhotoImage(file="")
+sharmanderlabel.grid(row=1, ipadx=50)
+	
+fotobulbatauro = PhotoImage(file="Bulbatauro.png")
 bulbataurolabel = Label(root, image=fotobulbatauro)
-bulbataurolabel.grid(row=1,column=1)
+bulbataurolabel.grid(row=1,column=1, ipadx=50)
 
-fotoskuirtle = PhotoImage(file="")
+fotoskuirtle = PhotoImage(file="Skuirtle.png")
 skuirtlelabel = Label(root, image=fotoskuirtle)
-skuirtlelabel.grid(row=1,column=2)
+skuirtlelabel.grid(row=1,column=2, ipadx=50)
 
 
 root.mainloop()
