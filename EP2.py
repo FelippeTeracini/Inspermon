@@ -17,7 +17,11 @@ while True:
 	time.sleep(0.5)
 	while True:
 
-		print("Com qual Inspermón você deseja iniciar?")
+
+#    ==============================    Inspermon Inicial    ====================================
+
+
+		print("Com qual Inspermón você deseja iniciar?")     # apresentação dos inspermons
 		time.sleep(0.5)
 		print("- Sharmander: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Sharmander"]["ataque"],dicionario_inspermons_iniciais["Sharmander"]["defesa"],dicionario_inspermons_iniciais["Sharmander"]["vida"]))
 		time.sleep(0.5)		
@@ -27,7 +31,7 @@ while True:
 		time.sleep(0.5)	
 
 
-		inspermon_inicial = input("->")
+		inspermon_inicial = input("->")   		# definição de qual inspermon sera o escolhido
 		inspermon_inicial = inspermon_inicial.lower()
 
 		'''def pokemon_inicial(pokemon):
@@ -40,7 +44,7 @@ while True:
 		if inspermon_inicial == "sharmander":
 			pokemon_inicial(sharmander)'''
 
-		if inspermon_inicial == "sharmander":
+		if inspermon_inicial == "sharmander":   			# definição dos atributos do inspermon
 			ataque1=dicionario_inspermons_iniciais["Sharmander"]["ataque"]
 			defesa=dicionario_inspermons_iniciais["Sharmander"]["defesa"]
 			vida=dicionario_inspermons_iniciais["Sharmander"]["vida"]
@@ -65,7 +69,7 @@ while True:
 
 
 	while True:
-		time.sleep(0.5)
+		time.sleep(0.5)							# Mudança de nome do inspermon
 		namechange = input("Deseja mudar o nome do seu Inspermón? ")  # Caracterização do próprio personagem
 		namechange = namechange.lower()
 
@@ -84,10 +88,10 @@ while True:
 			print("Digite um comando válido (Sim ou Não)")
 			continue
 	time.sleep(0.5)
-	print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
+	print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))   # Apresentação do Inspermon
 	time.sleep(0.5)
 
-# Início do jogo:
+#    ==========================================     Início do jogo      ================================================
 	while True:  # Jogo
 
 		comando = input("O que você deseja fazer? (Passear ou Dormir): ")  # Pergunta sobre o que o usuário deseja fazer
@@ -117,8 +121,7 @@ while True:
 			time.sleep(1)
 
 
-
-# Batalha:
+#       =================================================    Batalha    ===============================================
 			while True:
 
 				while True:
@@ -170,10 +173,10 @@ while True:
 										time.sleep(0.5)
 										print("Voce derrotou {}!" .format(nome_oponente))
 										time.sleep(0.5)
-										xp_ganho = 10
+										xp_ganho = 10    # Experiência recebida
 										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
 										time.sleep(0.5)
-										xp = xp + xp_ganho
+										xp = xp + xp_ganho    # Atualização da experiência
 										ataque1=ataque1/2
 										x=3
 										break
@@ -193,11 +196,11 @@ while True:
 										print("Voce derrotou {}!" .format(nome_oponente))
 
 										time.sleep(0.5)
-										xp_ganho = 10
+										xp_ganho = 10    # Experiência recebida
 										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
 
 										time.sleep(0.5)
-										xp = xp + xp_ganho
+										xp = xp + xp_ganho    # Atualização da experiência
 										x=3
 										break
 
@@ -225,10 +228,10 @@ while True:
 										time.sleep(0.5)
 										print("Voce derrotou {}!" .format(nome_oponente))
 										time.sleep(0.5)
-										xp_ganho = 10
+										xp_ganho = 10    # Experiência recebida
 										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
 										time.sleep(0.5)
-										xp = xp + xp_ganho
+										xp = xp + xp_ganho    # Atualização da experiência
 										ataque2=ataque2/2
 										x=3
 										break
@@ -248,16 +251,16 @@ while True:
 										print("Voce derrotou {}!" .format(nome_oponente))
 
 										time.sleep(0.5)
-										xp_ganho = 10
+										xp_ganho = 10    # Experiência recebida
 										print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
 
 										time.sleep(0.5)
-										xp = xp + xp_ganho
+										xp = xp + xp_ganho    # Atualização da experiência
 										x=3
 										break
 
 
-							if critico==1:
+							if critico==1:      # Caso seja um ataque crítico
 								ataque2=ataque2*2
 
 							if ataque2-defesa_oponente>0:  # Verifica se o inspermon causou dano no adverário
@@ -278,10 +281,10 @@ while True:
 								time.sleep(0.5)
 								print("Voce derrotou {}!" .format(nome_oponente))
 								time.sleep(0.5)
-								xp_ganho = 10
+								xp_ganho = 10    # Exepriência recebida
 								print("Voce recebeu {} de experiencia, agora voce tem {}".format(xp_ganho,xp+xp_ganho))
 								time.sleep(0.5)
-								xp = xp + xp_ganho
+								xp = xp + xp_ganho    # Atualização da experiência
 								x=3
 								break
 
@@ -303,12 +306,12 @@ while True:
 
 						critico_oponente = random.randint(0,5)
 
-						if critico_oponente==1:
+						if critico_oponente==1:   #Ataque crítico do oponente
 							print("ATAQUE CRÍTICO")
 							time.sleep(0.5)
 							ataque_oponente=ataque_oponente*2
 
-							if  ataque_oponente-defesa >0:
+							if  ataque_oponente-defesa >0:   #Ataque crítico do oponente
 								vida= batalha(vida, ataque_oponente, defesa)
 								print("{} deu {} de dano em {}! Agora ele tem {} de vida".format(nome_oponente,ataque_oponente-defesa,nome,vida))
 								time.sleep(0.5)
@@ -316,19 +319,19 @@ while True:
 								continue
 
 							else:
-								ataque_oponente=ataque_oponente/2
+								ataque_oponente=ataque_oponente/2   #Ataque crítico sem dano do oponente
 								print("Seu Inspermón não levou dano")
 								time.sleep(0.5)
 								continue
 
 						if critico_oponente!=1:
-							if ataque_oponente- defesa>0:
+							if ataque_oponente- defesa>0:   #Ataque do oponente
 								vida=batalha(vida, ataque_oponente, defesa)
 								print("{} deu {} de dano em {}! Agora ele tem {} de vida".format(nome_oponente,ataque_oponente-defesa,nome,vida))		
 								time.sleep(0.5)
 								continue						
 						
-							else:
+							else:   #Ataque do oponente sem dano
 								print("Seu Inspermón não levou dano")
 								time.sleep(0.5)
 								continue
@@ -349,7 +352,7 @@ while True:
 			print("Digite um comando válido.")
 			time.sleep(0.5)
 
-	print("Até a proxima!")
+	print("Até a proxima!")       # Fim do jogo
 
 	break
 
