@@ -1,4 +1,4 @@
-pokemons_lendarios= {
+qpokemons_lendarios= {
 	"Articuno":{
 		"ataque":80,"defesa":70,"vida":100
 	},
