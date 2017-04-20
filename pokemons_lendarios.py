@@ -1,4 +1,6 @@
-pokemons_lendarios= {
+import pickle 
+
+inspermons_lendarios= {
 	"Articuno":{
 		"ataque":80,"defesa":70,"vida":100
 	},
@@ -9,3 +11,6 @@ pokemons_lendarios= {
 		"ataque":75,"defesa":75,"vida":100
 	}
 }
+
+with open("inspermons_lendarios.pickle","wb") as arquivo_inspermons_lendarios:
+	pickle.dump(inspermons_lendarios,arquivo_inspermons_lendarios)

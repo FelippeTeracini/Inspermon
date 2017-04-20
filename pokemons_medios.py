@@ -1,4 +1,6 @@
-pokemons_medios= {
+import pickle
+
+inspermons_medios= {
 	"Machups":{
 		"ataque":12,"defesa":8,"vida":30
 	},
@@ -24,3 +26,6 @@ pokemons_medios= {
 		"ataque":15,"defesa":12,"vida":29
 	}
 }
+
+with open("inspermons_medios.pickle","wb") as arquivo_inspermons_medios:
+	pickle.dump(inspermons_medios,arquivo_inspermons_medios)

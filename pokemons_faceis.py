@@ -1,4 +1,6 @@
-pokemons_faceis= {
+import pickle
+
+inspermons_faceis= {
 	"Pikaxu":{
 		"ataque":3,"defesa":2,"vida":18
 	},
@@ -24,3 +26,6 @@ pokemons_faceis= {
 		"ataque":3,"defesa":3,"vida":20
 	}	
 }
+
+with open("inspermons_faceis.pickle","wb") as arquivo_inspermons_faceis:
+	pickle.dump(inspermons_faceis,arquivo_inspermons_faceis)

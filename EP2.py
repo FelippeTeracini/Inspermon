@@ -8,11 +8,21 @@ def funcaoxp(xp,xp_ganho):
 	xp=xp+xp_ganho
 	return xp
 
-with open("inspermons_noobs.pickle","rb") as arquivo_inspermons_noobs:
-		dicionario_inspermons=pickle.load(arquivo_inspermons_noobs)
+with open("inspermons_faceis.pickle","rb") as arquivo_inspermons_faceis:
+		dicionario_inspermons_faceis=pickle.load(arquivo_inspermons_faceis)
 
 with open("inspermons_iniciais.pickle","rb") as arquivo_inspermons_iniciais:
 		dicionario_inspermons_iniciais=pickle.load(arquivo_inspermons_iniciais)
+
+with open("inspermons_medios.pickle","rb") as arquivo_inspermons_medios:
+		dicionario_inspermons_medios=pickle.load(arquivo_inspermons_medios)
+
+with open("inspermons_dificeis.pickle","rb") as arquivo_inspermons_dificeis:
+		dicionario_inspermons_dificeis=pickle.load(arquivo_inspermons_dificeis)
+
+with open("inspermons_lendarios.pickle","rb") as arquivo_inspermons_lendarios:
+		dicionario_inspermons_lendarios=pickle.load(arquivo_inspermons_lendarios)
+
 
 xp = 0
 
@@ -31,7 +41,7 @@ while True:
 		time.sleep(0.5)		
 		print("- Skuirtle: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Skuirtle"]["ataque"],dicionario_inspermons_iniciais["Skuirtle"]["defesa"],dicionario_inspermons_iniciais["Skuirtle"]["vida"]))
 		time.sleep(0.5)		
-		print("- Bulbatauro: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Bubatauro"]["ataque"],dicionario_inspermons_iniciais["Bubatauro"]["defesa"],dicionario_inspermons_iniciais["Bubatauro"]["vida"]))
+		print("- Bulbatauro: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Bulbatauro"]["ataque"],dicionario_inspermons_iniciais["Bulbatauro"]["defesa"],dicionario_inspermons_iniciais["Bulbatauro"]["vida"]))
 		time.sleep(0.5)	
 
 
@@ -117,19 +127,65 @@ while True:
 
 			print("Você encontrou um Inspermón")  # Encontro com um inspermon
 			time.sleep(1)
-			if evolucao == 1:			
-				nome_oponente=random.choice(list(dicionario_inspermons.keys()))   # Escolha aleatória do inspermon adversário
+
+			if evolucao == 1:
+
+				nome_oponente=random.choice(list(dicionario_inspermons_faceis.keys()))   # Escolha aleatória do inspermon adversário
+				ataque_oponente=dicionario_inspermons_faceis[nome_oponente]["ataque"] 
+				defesa_oponente=dicionario_inspermons_faceis[nome_oponente]["defesa"]
+				vida_oponente=dicionario_inspermons_faceis[nome_oponente]["vida"]
+
 			elif evolucao == 2:
-				nome_oponente=random.choice(list(dicionario_inspermons.keys()))
+
+				chance_2 = random.randint(1,5)
+
+				if chance_2 == 1:
+					nome_oponente=random.choice(list(dicionario_inspermons_faceis.keys()))
+					ataque_oponente=dicionario_inspermons_faceis[nome_oponente]["ataque"] 
+					defesa_oponente=dicionario_inspermons_faceis[nome_oponente]["defesa"]
+					vida_oponente=dicionario_inspermons_faceis[nome_oponente]["vida"]
+				else:
+					nome_oponente=random.choice(list(dicionario_inspermons_medios.keys()))
+					ataque_oponente=dicionario_inspermons_medios[nome_oponente]["ataque"] 
+					defesa_oponente=dicionario_inspermons_medios[nome_oponente]["defesa"]
+					vida_oponente=dicionario_inspermons_medios[nome_oponente]["vida"]
+
+			elif evolucao == 3:
+
+				chance_3 = random.randint(1,20)
+
+				if chance_3 == 1:
+					nome_oponente=random.choice(list(dicionario_inspermons_lendarios.keys()))
+					ataque_oponente=dicionario_inspermons_lendarios[nome_oponente]["ataque"] 
+					defesa_oponente=dicionario_inspermons_lendarios[nome_oponente]["defesa"]
+					vida_oponente=dicionario_inspermons_lendarios[nome_oponente]["vida"]
+
+				elif chance_3 == 2 or chance_3 == 3 or chance_3 == 4:
+					nome_oponente=random.choice(list(dicionario_inspermons_faceis.keys()))
+					ataque_oponente=dicionario_inspermons_faceis[nome_oponente]["ataque"] 
+					defesa_oponente=dicionario_inspermons_faceis[nome_oponente]["defesa"]
+					vida_oponente=dicionario_inspermons_faceis[nome_oponente]["vida"]
+
+				elif chance_3 == 5 or chance_3 == 6 or chance_3 == 7 or chance_3 == 8 or chance_3 == 9 or chance_3 == 10:
+					nome_oponente=random.choice(list(dicionario_inspermons_medios.keys()))
+					ataque_oponente=dicionario_inspermons_medios[nome_oponente]["ataque"] 
+					defesa_oponente=dicionario_inspermons_medios[nome_oponente]["defesa"]
+					vida_oponente=dicionario_inspermons_medios[nome_oponente]["vida"]
+
+				else:
+					nome_oponente=random.choice(list(dicionario_inspermons_dificeis.keys()))
+					ataque_oponente=dicionario_inspermons_dificeis[nome_oponente]["ataque"] 
+					defesa_oponente=dicionario_inspermons_dificeis[nome_oponente]["defesa"]
+					vida_oponente=dicionario_inspermons_dificeis[nome_oponente]["vida"]
+
+
+
+
 
 
 
 			print("Voce esta batalhando contra {}".format(nome_oponente))  
 			time.sleep(1)
-			ataque_oponente=dicionario_inspermons[nome_oponente]["ataque"] # Definição aleatória do atributos do Inspermon adversário
-			defesa_oponente=dicionario_inspermons[nome_oponente]["defesa"]
-			vida_oponente=dicionario_inspermons[nome_oponente]["vida"]
-
 
 			print("Este Inspermón possui os seguintes atributos: Ataque: {}, Defesa: {} e Vida: {}".format(ataque_oponente,defesa_oponente,vida_oponente))
 			time.sleep(1)
@@ -142,6 +198,21 @@ while True:
 					x=2
 					if evolucao == 1:
 						xp_ganho=10
+					elif evolucao == 2:
+						if chance_2 == 1:
+							xp_ganho = 10
+						else:
+							xp_ganho = 20
+					elif evolucao == 3:
+						if chance_3 == 1:
+							xp_ganho = 100
+						elif chance_3 == 2 or chance_3 == 3 or chance_3 == 4:
+							xp_ganho = 10
+						elif chance_3 == 5 or chance_3 == 6 or chance_3 == 7 or chance_3 == 8 or chance_3 == 9 or chance_3 == 10:
+							xp_ganho = 20
+						else:
+							xp_ganho = 30 
+
 
 					ação=input("O que você deseja fazer? (Atacar ou Fugir): ")   # Pergunta se deseja atacar ou fugir
 
@@ -355,8 +426,11 @@ while True:
 					x=2
 					break
 			if evolucao == 1 and xp >= 200:
+
 				evolucao = 2
+
 				if index == 1:
+
 					time.sleep(0.5)
 					print("{} está se preparando para evoluir".format(nome))
 					time.sleep(0.5)
@@ -364,11 +438,127 @@ while True:
 					time.sleep(0.5)
 					print(".")
 					time.sleep(0.5)
-					print(".", end="")
+					print(".")
 					time.sleep(0.5)
-					print("{} evoluiu para Sharmeleon!".format(nome))
+					print("{} evoluiu para Sharmilion!".format(nome))
+
+					ataque1=dicionario_inspermons_iniciais["Sharmilion"]["ataque"]
+					defesa=dicionario_inspermons_iniciais["Sharmilion"]["defesa"]
+					vida=dicionario_inspermons_iniciais["Sharmilion"]["vida"]
+					nome="Sharmilion"
+
+					time.sleep(0.5)
+					print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
+					
 				if index == 2:
+
 					time.sleep(0.5)
+					print("{} está se preparando para evoluir".format(nome))
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print("{} evoluiu para Uarturtle!".format(nome))
+
+					ataque1=dicionario_inspermons_iniciais["Uarturtle"]["ataque"]
+					defesa=dicionario_inspermons_iniciais["Uarturtle"]["defesa"]
+					vida=dicionario_inspermons_iniciais["Uarturtle"]["vida"]
+					nome="Uarturtle"
+
+					time.sleep(0.5)
+					print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
+
+				if index == 3:
+
+					time.sleep(0.5)
+					print("{} está se preparando para evoluir".format(nome))
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print("{} evoluiu para Ivitauro!".format(nome))
+
+					ataque1=dicionario_inspermons_iniciais["Ivitauro"]["ataque"]
+					defesa=dicionario_inspermons_iniciais["Ivitauro"]["defesa"]
+					vida=dicionario_inspermons_iniciais["Ivitauro"]["vida"]
+					nome="Ivitauro"
+
+					time.sleep(0.5)
+					print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
+
+			elif evolucao == 2 and xp >= 500:
+				
+				evolucao = 3
+
+				if index == 1:
+
+					time.sleep(0.5)
+					print("{} está se preparando para evoluir".format(nome))
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print("{} evoluiu para Cheirazard!".format(nome))
+
+					ataque1=dicionario_inspermons_iniciais["Cheirazard"]["ataque"]
+					defesa=dicionario_inspermons_iniciais["Cheirazard"]["defesa"]
+					vida=dicionario_inspermons_iniciais["Cheirazard"]["vida"]
+					nome="Cheirazard"
+
+					time.sleep(0.5)
+					print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
+					
+				if index == 2:
+
+					time.sleep(0.5)
+					print("{} está se preparando para evoluir".format(nome))
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print("{} evoluiu para Blastoide!".format(nome))
+
+					ataque1=dicionario_inspermons_iniciais["Blastoide"]["ataque"]
+					defesa=dicionario_inspermons_iniciais["Blastoide"]["defesa"]
+					vida=dicionario_inspermons_iniciais["Blastoide"]["vida"]
+					nome="Blastoide"
+
+					time.sleep(0.5)
+					print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
+
+				if index == 3:
+
+					time.sleep(0.5)
+					print("{} está se preparando para evoluir".format(nome))
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print("{} evoluiu para Venustauro!".format(nome))
+
+					ataque1=dicionario_inspermons_iniciais["Venustauro"]["ataque"]
+					defesa=dicionario_inspermons_iniciais["Venustauro"]["defesa"]
+					vida=dicionario_inspermons_iniciais["Venustauro"]["vida"]
+					nome="Venustauro"
+
+					time.sleep(0.5)
+					print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
+
 
 			continue
 			

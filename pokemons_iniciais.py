@@ -1,4 +1,6 @@
-pokemons_iniciais= {
+import pickle
+
+inspermons_iniciais= {
 	"Sharmander":{
 		"ataque":5,"defesa":2,"vida":15
 	},
@@ -27,3 +29,6 @@ pokemons_iniciais= {
 		"ataque":40,"defesa":35,"vida":40
 	}
 }
+
+with open("inspermons_iniciais.pickle","wb") as arquivo_inspermons_iniciais:
+	pickle.dump(inspermons_iniciais,arquivo_inspermons_iniciais)
