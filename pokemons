@@ -8,7 +8,7 @@ pokemons= {
 	"Bulbatauro":{
 		"ataque":3,"defesa":3,"vida":20
 	},
-	"Shamrilion":{
+	"Sharmilion":{
 		"ataque":12,"defesa":10,"vida":31
 	},
 	"Ivitauro":{
