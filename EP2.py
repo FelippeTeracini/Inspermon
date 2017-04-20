@@ -4,6 +4,10 @@ import pickle
 def batalha(x,y,z):
 	return x-y+z
 
+def funcaoxp(xp,xp_ganho):
+	xp=xp+xp_ganho
+	return xp
+
 with open("inspermons_noobs.pickle","rb") as arquivo_inspermons_noobs:
 		dicionario_inspermons=pickle.load(arquivo_inspermons_noobs)
 
@@ -49,18 +53,24 @@ while True:
 			defesa=dicionario_inspermons_iniciais["Sharmander"]["defesa"]
 			vida=dicionario_inspermons_iniciais["Sharmander"]["vida"]
 			nome="Sharmander"
+			index = 1
+			evolucao = 1
 			break
 		if inspermon_inicial == "skuirtle":
 			ataque1=dicionario_inspermons_iniciais["Skuirtle"]["ataque"]
 			defesa=dicionario_inspermons_iniciais["Skuirtle"]["defesa"]
 			vida=dicionario_inspermons_iniciais["Skuirtle"]["vida"]
 			nome="Skuirtle"
+			index = 2
+			evolucao = 1
 			break
 		elif inspermon_inicial == "bulbatauro":
 			ataque1=dicionario_inspermons_iniciais["Bubatauro"]["ataque"]
 			defesa=dicionario_inspermons_iniciais["Bubatauro"]["defesa"]
 			vida=dicionario_inspermons_iniciais["Bubatauro"]["vida"]
 			nome="Bulbatauro"
+			index = 3
+			evolucao = 1
 			break
 		else:
 			print("Digite um Inspermón válido")
@@ -106,8 +116,12 @@ while True:
 			time.sleep(1) 
 
 			print("Você encontrou um Inspermón")  # Encontro com um inspermon
-			time.sleep(1)			
-			nome_oponente=random.choice(list(dicionario_inspermons.keys()))   # Escolha aleatória do inspermon adversário
+			time.sleep(1)
+			if evolucao == 1:			
+				nome_oponente=random.choice(list(dicionario_inspermons.keys()))   # Escolha aleatória do inspermon adversário
+			elif evolucao == 2:
+				nome_oponente=random.choice(list(dicionario_inspermons.keys()))
+
 
 
 			print("Voce esta batalhando contra {}".format(nome_oponente))  
@@ -126,10 +140,8 @@ while True:
 
 				while True:
 					x=2
-					xp_ganho=10
-					def funcaoxp(xp,xp_ganho):
-						xp=xp+xp_ganho
-						return xp
+					if evolucao == 1:
+						xp_ganho=10
 
 					ação=input("O que você deseja fazer? (Atacar ou Fugir): ")   # Pergunta se deseja atacar ou fugir
 
@@ -342,6 +354,21 @@ while True:
 				elif x==1 or x==3:  # X para fuga com sucesso/parada do loop de batalha
 					x=2
 					break
+			if evolucao == 1 and xp >= 200:
+				evolucao = 2
+				if index == 1:
+					time.sleep(0.5)
+					print("{} está se preparando para evoluir".format(nome))
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print(".")
+					time.sleep(0.5)
+					print(".", end="")
+					time.sleep(0.5)
+					print("{} evoluiu para Sharmeleon!".format(nome))
+				if index == 2:
+					time.sleep(0.5)
 
 			continue
 			
