@@ -102,6 +102,7 @@ while True:
 
 	nome=MudaNome(nome)
 
+
 	vida = vida_inicial
 	time.sleep(0.5)
 	print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))   # Apresentação do Inspermon
@@ -449,6 +450,7 @@ while True:
 				elif x==1 or x==3:  # X para fuga com sucesso/parada do loop de batalha
 					x=2
 					break
+<<<<<<< HEAD
 
 #    =================================    Evolução    ===================================
 
@@ -477,6 +479,36 @@ while True:
 
 				return(ataque1,defesa,vida_inicial)
 
+=======
+
+#    =================================    Evolução    ===================================
+
+			def funcao_evolucao(nome,pokemon,evolucao):
+
+				print("{} está se preparando para evoluir".format(nome))
+				time.sleep(0.5)
+				print(".")
+				time.sleep(0.5)
+				print(".")
+				time.sleep(0.5)
+				print(".")
+				time.sleep(0.5)
+				print("{} evoluiu para {}!".format(nome, evolucao))
+
+				ataque1=dicionario_inspermons_iniciais[evolucao]["ataque"]
+				defesa=dicionario_inspermons_iniciais[evolucao]["defesa"]
+				vida_inicial=dicionario_inspermons_iniciais[evolucao]["vida"]
+
+				nome = evolucao
+
+				vida = vida_inicial
+
+				time.sleep(0.5)
+				print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
+
+				return(ataque1,defesa,vida_inicial)
+
+>>>>>>> 74f0172964a31411f8f8677b598fd1842024c273
 			if evolucao == 1 and xp >= 200:
 
 				evolucao = 2
