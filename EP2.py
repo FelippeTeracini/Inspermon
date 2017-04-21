@@ -367,7 +367,10 @@ while True:
 								time.sleep(0.5)
 								x=3
 								break
-
+						'''if ataque_ativo == str:
+							print("Digite um ataque válido!")
+							time.sleep(0.5)
+							continue'''
 						else: # Erro de digitação
 
 							print("Digite um ataque válido!")
@@ -391,7 +394,7 @@ while True:
 							time.sleep(0.5)
 							ataque_oponente=ataque_oponente*2
 
-							if  ataque_oponente-defesa >0:   #Ataque crítico do oponente
+							if  ataque_oponente-defesa >0 :   #Ataque crítico do oponente
 								vida= batalha(vida, ataque_oponente, defesa)
 								print("{} deu {} de dano em {}! Agora ele tem {} de vida".format(nome_oponente,ataque_oponente-defesa,nome,vida))
 								time.sleep(0.5)

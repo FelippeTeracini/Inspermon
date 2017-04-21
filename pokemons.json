@@ -11,7 +11,7 @@ pokemons="pokemons": {
 	"Shamrilion":{
 		"ataque":12,"defesa":10,"vida":31
 	},
-	"Ivitauro":{
+	"Ivitauro":{	
 		"ataque":10,"defesa":15,"vida":35
 	},
 	"Uarturtle":{

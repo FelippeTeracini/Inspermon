@@ -8,7 +8,7 @@ class Pokemon:
 		self.vida = vida
 
 with open("pokemons.json") as json_data:
-	pokemons = json.load(json_data)
+	pokemons = json.loads(json_data)
 
 pokemonsDict = dict
 
