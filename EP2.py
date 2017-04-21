@@ -8,6 +8,31 @@ def funcaoxp(xp,xp_ganho):
 	xp=xp+xp_ganho
 	return xp
 
+def MudaNome(nome):
+	while True:
+
+		x = input("Deseja mudar o nome do seu Inspermón? ")
+		x = x.lower()
+
+		if x == "sim" or x == "s":
+
+			nome = input("Qual será o nome do seu Inspermón? ")
+			print("Agora o nome do seu Inspermón é {}".format(nome))
+			break
+
+		elif x == "nao" or x == "n" or x == "não":
+
+			nome = nome
+			print("O nome do seu Inspermón ainda é {}".format(nome))
+			break
+
+		else:
+			print("Digite um comando válido (Sim ou Não)")
+			continue
+
+	return nome
+
+
 with open("inspermons_faceis.pickle","rb") as arquivo_inspermons_faceis:
 		dicionario_inspermons_faceis=pickle.load(arquivo_inspermons_faceis)
 
@@ -24,7 +49,7 @@ with open("inspermons_lendarios.pickle","rb") as arquivo_inspermons_lendarios:
 		dicionario_inspermons_lendarios=pickle.load(arquivo_inspermons_lendarios)
 
 
-xp = 0
+xp = 190
 
 while True:
 	print("Bem vindo ao Inspermón")  # Início do jogo
@@ -48,10 +73,10 @@ while True:
 		inspermon_inicial = input("->")   		# definição de qual inspermon sera o escolhido
 		inspermon_inicial = inspermon_inicial.lower()
 
-		'''def pokemon_inicial(pokemon):
-			ataque1=dicionario_inspermons_iniciais["pokemon"]["ataque"]
-			defesa=dicionario_inspermons_iniciais["pokemon"]["defesa"]
-			vida=dicionario_inspermons_iniciais["pokemon"]["vida"]
+		'''def pokemon_inicial(pokemon,x):
+			ataque1=x[pokemon]["ataque"]
+			defesa=x[pokemon]["defesa"]
+			vida=x[pokemon]["vida"]
 			nome=pokemon.title()
 
 
@@ -61,7 +86,7 @@ while True:
 		if inspermon_inicial == "sharmander":   			# definição dos atributos do inspermon
 			ataque1=dicionario_inspermons_iniciais["Sharmander"]["ataque"]
 			defesa=dicionario_inspermons_iniciais["Sharmander"]["defesa"]
-			vida=dicionario_inspermons_iniciais["Sharmander"]["vida"]
+			vida_inicial=dicionario_inspermons_iniciais["Sharmander"]["vida"]
 			nome="Sharmander"
 			index = 1
 			evolucao = 1
@@ -69,7 +94,7 @@ while True:
 		if inspermon_inicial == "skuirtle":
 			ataque1=dicionario_inspermons_iniciais["Skuirtle"]["ataque"]
 			defesa=dicionario_inspermons_iniciais["Skuirtle"]["defesa"]
-			vida=dicionario_inspermons_iniciais["Skuirtle"]["vida"]
+			vida_inicial=dicionario_inspermons_iniciais["Skuirtle"]["vida"]
 			nome="Skuirtle"
 			index = 2
 			evolucao = 1
@@ -77,7 +102,7 @@ while True:
 		elif inspermon_inicial == "bulbatauro":
 			ataque1=dicionario_inspermons_iniciais["Bubatauro"]["ataque"]
 			defesa=dicionario_inspermons_iniciais["Bubatauro"]["defesa"]
-			vida=dicionario_inspermons_iniciais["Bubatauro"]["vida"]
+			vida_inicial=dicionario_inspermons_iniciais["Bubatauro"]["vida"]
 			nome="Bulbatauro"
 			index = 3
 			evolucao = 1
@@ -107,6 +132,7 @@ while True:
 		else:
 			print("Digite um comando válido (Sim ou Não)")
 			continue
+	vida = vida_inicial
 	time.sleep(0.5)
 	print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))   # Apresentação do Inspermon
 	time.sleep(0.5)
@@ -298,7 +324,7 @@ while True:
 								print("ATAQUE CRÍTICO" .format(nome))
 								time.sleep(0.5)
 
-								if vida_oponente>0:  # Realização do ataque e atualização da vida restante
+								if vida_oponente>0 and ataque2-defesa_oponente>=0:  # Realização do ataque e atualização da vida restante
 									vida_oponente= batalha(vida_oponente,ataque2,defesa_oponente)
 
 									if vida_oponente>0:
@@ -422,7 +448,7 @@ while True:
 						if vida<=0:  # Derrota do seu inspermon
 							print("Seu Inspermón desmaiou e foi levado para o InsperCenter")
 							time.sleep(0.5)
-							vida=20
+							vida=vida_inicial
 							break
 
 				elif x==1 or x==3:  # X para fuga com sucesso/parada do loop de batalha
@@ -447,8 +473,12 @@ while True:
 
 					ataque1=dicionario_inspermons_iniciais["Sharmilion"]["ataque"]
 					defesa=dicionario_inspermons_iniciais["Sharmilion"]["defesa"]
-					vida=dicionario_inspermons_iniciais["Sharmilion"]["vida"]
+					vida_inicial=dicionario_inspermons_iniciais["Sharmilion"]["vida"]
 					nome="Sharmilion"
+
+					nome = MudaNome(nome)
+
+					vida = vida_inicial
 
 					time.sleep(0.5)
 					print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
@@ -468,8 +498,12 @@ while True:
 
 					ataque1=dicionario_inspermons_iniciais["Uarturtle"]["ataque"]
 					defesa=dicionario_inspermons_iniciais["Uarturtle"]["defesa"]
-					vida=dicionario_inspermons_iniciais["Uarturtle"]["vida"]
+					vida_inicial=dicionario_inspermons_iniciais["Uarturtle"]["vida"]
 					nome="Uarturtle"
+
+					nome = MudaNome(nome)
+
+					vida = vida_inicial
 
 					time.sleep(0.5)
 					print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
@@ -489,8 +523,12 @@ while True:
 
 					ataque1=dicionario_inspermons_iniciais["Ivitauro"]["ataque"]
 					defesa=dicionario_inspermons_iniciais["Ivitauro"]["defesa"]
-					vida=dicionario_inspermons_iniciais["Ivitauro"]["vida"]
+					vida_inicial=dicionario_inspermons_iniciais["Ivitauro"]["vida"]
 					nome="Ivitauro"
+
+					nome = MudaNome(nome)
+
+					vida = vida_inicial
 
 					time.sleep(0.5)
 					print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
@@ -514,8 +552,12 @@ while True:
 
 					ataque1=dicionario_inspermons_iniciais["Cheirazard"]["ataque"]
 					defesa=dicionario_inspermons_iniciais["Cheirazard"]["defesa"]
-					vida=dicionario_inspermons_iniciais["Cheirazard"]["vida"]
+					vida_inicial=dicionario_inspermons_iniciais["Cheirazard"]["vida"]
 					nome="Cheirazard"
+
+					nome = MudaNome(nome)
+
+					vida = vida_inicial
 
 					time.sleep(0.5)
 					print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
@@ -535,8 +577,12 @@ while True:
 
 					ataque1=dicionario_inspermons_iniciais["Blastoide"]["ataque"]
 					defesa=dicionario_inspermons_iniciais["Blastoide"]["defesa"]
-					vida=dicionario_inspermons_iniciais["Blastoide"]["vida"]
+					vida_inicial=dicionario_inspermons_iniciais["Blastoide"]["vida"]
 					nome="Blastoide"
+
+					nome = MudaNome(nome)
+
+					vida = vida_inicial
 
 					time.sleep(0.5)
 					print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
@@ -556,8 +602,12 @@ while True:
 
 					ataque1=dicionario_inspermons_iniciais["Venustauro"]["ataque"]
 					defesa=dicionario_inspermons_iniciais["Venustauro"]["defesa"]
-					vida=dicionario_inspermons_iniciais["Venustauro"]["vida"]
+					vida_inicial=dicionario_inspermons_iniciais["Venustauro"]["vida"]
 					nome="Venustauro"
+
+					nome = MudaNome(nome)
+
+					vida = vida_inicial
 
 					time.sleep(0.5)
 					print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
