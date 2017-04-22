@@ -1,6 +1,8 @@
 import random
 import time
 import pickle
+import os 
+
 sim=["sim", "s"]
 nao=["nao","n","não"]
 def batalha(x,y,z):
@@ -13,11 +15,11 @@ def funcaoxp(xp,xp_ganho):
 def MudaNome(nome):
 	while True:
 
-		x = input("Deseja mudar o nome do seu Inspermón? ")
+		x = input("Deseja mudar o nome do seu Inspermón?\n ")
 		x = x.lower()
 
 		if x in sim:
-			nome = input("Qual será o nome do seu Inspermón? ")
+			nome = input("Qual será o nome do seu Inspermón?\n ")
 			print("Agora o nome do seu Inspermón é {}".format(nome))
 			break
 
@@ -53,7 +55,20 @@ xp = 190
 
 while True:
 	print("Bem vindo ao Inspermón")  # Início do jogo
-	time.sleep(0.5)
+
+	'''abrir_salvo=input("Deseja abrir jogo salvo? \n ")
+
+	if abrir_salvo in sim:
+		with open("jogo_salvo","rb") as arquivo_jogo_salvo:
+			dados_salvos=pickle.load(arquivo_jogo_salvo)
+			
+		nome=dados_salvos["nome"]
+		ataque1=dados_salvos["ataque"]
+		defesa=dados_salvos["defesa"]
+		vida_inicial=dados_salvos["vida"]
+		xp=dados_salvos["xp"]
+
+	time.sleep(0.5)'''
 	while True:
 
 
@@ -109,11 +124,11 @@ while True:
 	time.sleep(0.5)
 	print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))   # Apresentação do Inspermon
 	time.sleep(0.5)
-
+	dinheiro=100000
 #    ==========================================     Início do jogo      ================================================
 	while True:  # Jogo
 		vida = vida_inicial
-		comando = input("O que você deseja fazer? (Passear ou Dormir): ")  # Pergunta sobre o que o usuário deseja fazer
+		comando = input("O que você deseja fazer? (Passear, Loja ou Dormir):\n ")  # Pergunta sobre o que o usuário deseja fazer
 		comando = comando.lower()
 
 		def escolha_adversário(lista):
@@ -126,6 +141,119 @@ while True:
 
 		if comando == "dormir":   # Dormir: para o jogo e salva os dados
 			break
+
+		elif comando == "loja":
+			while True:
+				time.sleep(0.5)
+				compra=input("Você está na loja, o que quer comprar: ataque, defesa ou vida? Você também pode sair digitando: sair\n ")
+
+			
+				if compra=="ataque":
+					time.sleep(1)
+					print("Você pode aumentar seu ataque em 1 por 10 inpermoedas, 5 por 50 inpermoedas ou 10 por 100 inpermoedas")
+					compra_ataque=input("Quanto deseja comprar?\n ")
+					time.sleep(1)
+
+					while True:
+						if compra_ataque==1 and dinheiro>=10:
+							print("Seu ataque aumentou 1 ponto")
+							ataque1=ataque1+1
+							dinheiro=dinheiro-10
+							break
+
+						elif compra_ataque==5 and dinheiro>=50:
+							print("Seu ataque aumentou 5 pontos")
+							ataque1=ataque1+5
+							dinheiro=dinheiro-50
+							break
+
+						if compra_ataque==1 and dinheiro>=100:
+							print("Seu ataque aumentou 10 pontos")
+							ataque1=ataque1+10
+							dinheiro=dinheiro-100
+							break
+
+						if compra_ataque!=1 or compra_ataque!=5 or compra_ataque!=10:
+							print("Digite um comando válido")
+							continue
+						else:
+							print("Infelizmente você não tem inspermoedas suficientes para comprar este item")
+							break
+
+				elif compra=="defesa":
+					time.sleep(1)
+					print("Você pode aumentar sua defesa em 1 por 10 inpermoedas, 5 por 50 inpermoedas ou 10 por 100 inpermoedas")
+					compra_defesa=input("Quanto deseja comprar?\n ")
+					time.sleep(1)
+
+					while True:
+						if compra_defesa==1 and dinheiro>=10:
+							print("Sua defesa aumentou 1 ponto")
+							defesa=defesa+1
+							dinheiro=dinheiro-10
+							break
+
+						if compra_defesa==5 and dinheiro>=50:
+							print("Sua defesa aumentou 5 pontos")
+							defesa=defesa+5
+							dinheiro=dinheiro-50
+							break
+
+						if compra_defesa==1 and dinheiro>=100:
+							print("Sua defesa aumentou 10 pontos")
+							defesa=defesa+10
+							dinheiro=dinheiro-100
+							break
+
+						if compra_defesa!=1 or compra_defesa!=5 or compra_defesa!=10:
+							print("Digite um comando válido")
+							continue
+
+						else:
+							print("Infelizmente você não tem inspermoedas suficientes para comprar este item")
+							break
+
+				elif compra=="vida":
+					time.sleep(1)
+					print("Você pode aumentar sua vida em 1 por 10 inpermoedas, 5 por 50 inpermoedas ou 10 por 100 inpermoedas")
+					compra_vida=input("Quanto deseja comprar?\n ")
+					time.sleep(1)
+
+					while True:
+						if compra_vida==1 and dinheiro>=10:
+							print("Sua vida aumentou 1 ponto")
+							vida_inicial=vida_inicial+1
+							dinheiro=dinheiro-10
+							break
+
+						if compra_vida==5 and dinheiro>=50:
+							print("Sua vida aumentou 5 pontos")
+							vida_inicial=vida_inicial+5
+							dinheiro=dinheiro-50
+							break
+
+						if compra_vida==1 and dinheiro>=100:
+							print("Sua vida aumentou 1 ponto")
+							vida_inicial=vida_inicial+10
+							dinheiro=dinheiro-100
+							break
+
+						if compra_vida!=1 or compra_vida!=5 or compra_vida!=10:
+							print("Digite um comando válido")
+							continue
+
+						else:
+							print("Infelizmente você não tem inspermoedas suficientes para comprar esta item")
+							break
+
+				elif compra=="sair":
+					time.sleep(0.5)
+					print("Volte sempre")
+					break
+				
+				else:
+					print("Digite um comando válido")
+					continue
 
 # Inspermon adversário:
 
@@ -200,7 +328,7 @@ while True:
 							xp_ganho = 30 
 
 
-					ação=input("O que você deseja fazer? (Atacar ou Fugir): ")   # Pergunta se deseja atacar ou fugir
+					ação=input("O que você deseja fazer? (Atacar ou Fugir):\n ")   # Pergunta se deseja atacar ou fugir
 
 					if ação == "fugir":
 						chancefugir=random.randint(1,2)  # Sorte de fuga
@@ -220,7 +348,7 @@ while True:
 					if ação == "atacar": # Ataque
 						print("1- Ataque normal, 2- Ataque de sorte ")
 						time.sleep(0.5)
-						ataque_ativo=int(input("Qual ataque deseja usar? 1 ou 2: "))  # Escolha do ataque a ser utilizado
+						ataque_ativo=int(input("Qual ataque deseja usar? 1 ou 2: \n "))  # Escolha do ataque a ser utilizado
 
 
 						critico=random.randint(1,5)  # Chance de ataque critico
@@ -507,24 +635,32 @@ while True:
 			time.sleep(0.5)
 
 	while True:
-		salvar_jogo=input("Deseja salvar o jogo? ")
+		time.sleep(0.5)
+		salvar_jogo=input("Deseja salvar o jogo? \n ")
 		salvar_jogo=salvar_jogo.lower()
 
 		if salvar_jogo in sim:
 			salvo=open("jogo_salvo.py","w")
 			salvo.write("import pickle\n")
-			salvo.write("inspermon: {}\n".format(nome))
-			salvo.write("ataque: {}\n".format(ataque1))
-			salvo.write("defesa: {}\n" .format(defesa))
-			salvo.write("vida: {}\n".format(vida))
-			salvo.write("experiência: {}\n" .format(xp))
+			salvo.write("jogo_salvo= {\n")
+			salvo.write("inspermon= {}\n".format(nome))
+			salvo.write("ataque= {}\n".format(ataque1))
+			salvo.write("defesa= {}\n" .format(defesa))
+			salvo.write("vida= {}\n".format(vida))
+			salvo.write("xp= {}\n" .format(xp))
 			#salvo.write("dinheiro: {}".format(dinheiro))
 			salvo.close()
 			time.sleep(0.5)
 			print("Jogo salvo com sucesso")
 			break
+
 		if salvar_jogo in nao:
 			break
+
+		else:
+			print("Digite um comando válido (Sim ou Não)")
+			continue
+
 	print("Até a proxima!")       # Fim do jogo
 
 	break
