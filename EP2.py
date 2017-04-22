@@ -464,6 +464,10 @@ while True:
 
 				return(ataque1,defesa,vida_inicial)
 
+				time.sleep(0.5)
+				print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
+
+
 			if evolucao == 1 and xp >= 200:
 
 				evolucao = 2
