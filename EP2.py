@@ -1,6 +1,8 @@
 import random
 import time
 import pickle
+sim=["sim", "s"]
+nao=["nao","n","não"]
 def batalha(x,y,z):
 	return x-y+z
 
@@ -14,12 +16,12 @@ def MudaNome(nome):
 		x = input("Deseja mudar o nome do seu Inspermón? ")
 		x = x.lower()
 
-		if x == "sim" or x == "s":
+		if x in sim:
 			nome = input("Qual será o nome do seu Inspermón? ")
 			print("Agora o nome do seu Inspermón é {}".format(nome))
 			break
 
-		elif x == "nao" or x == "n" or x == "não":
+		elif x in nao:
 			print("O nome do seu Inspermón ainda é {}".format(nome))
 			break
 
@@ -226,11 +228,11 @@ while True:
 						if ataque_ativo==1:
 
 							if critico==1:
-								if evolucao==1
-								ataque1=ataque1*2
-								print("ATAQUE CRÍTICO".format(nome))
-								time.sleep(0.5)
-								critico=random.randint(1,5)
+								if evolucao==1:
+									ataque1=ataque1*1.5
+									print("ATAQUE CRÍTICO".format(nome))
+									time.sleep(0.5)
+									critico=random.randint(1,5)
 
 								if vida_oponente>0 and ataque1-defesa_oponente>=0:  # Realização do ataque e atualização da vida restante
 									vida_oponente= batalha(vida_oponente,ataque1,defesa_oponente)
@@ -238,7 +240,7 @@ while True:
 									if vida_oponente>0:
 										print("{} deu {} de dano em {}, agora ele tem {} de vida".format(nome,ataque1-defesa_oponente,nome_oponente,vida_oponente))  # Cálculo da vida restante
 										time.sleep(0.5)
-										ataque1=ataque1/2
+										ataque1=ataque1/1.5
 										break 
 
 									else:			# Fim da batalha, vitória
@@ -249,7 +251,7 @@ while True:
 										xp=funcaoxp(xp,xp_ganho)   # Atualização da experiência										
 										print("Voce recebeu {} de experiencia, agora você tem {}".format(xp_ganho,xp))
 										time.sleep(0.5)
-										ataque1=ataque1/2
+										ataque1=ataque1/1.5
 										x=3
 										break
 
@@ -282,7 +284,7 @@ while True:
 							ataque2=random.randint(1,10)
 
 							if critico==1:
-								ataque2=ataque2*2
+								ataque2=ataque2*1.5
 								print("ATAQUE CRÍTICO" .format(nome))
 								time.sleep(0.5)
 								critico=random.randint(1,5)
@@ -294,12 +296,12 @@ while True:
 										if ataque2-defesa_oponente>0:
 											print("{} deu {} de dano em {}, agora ele tem {} de vida".format(nome,ataque2-defesa_oponente,nome_oponente,vida_oponente))  # Cálculo da vida restante
 											time.sleep(0.5)
-											ataque2=ataque2/2
+											ataque2=ataque2/1.5
 											break 
 										if ataque2-defesa_oponente<=0:
 											print("{} não deu dano em {}, ele continua com {} de vida".format(nome,ataque2-defesa_oponente,nome_oponente,vida_oponente))  # Cálculo da vida restante
 											time.sleep(0.5)
-											ataque2=ataque2/2
+											ataque2=ataque2/1.5
 											break 
 
 									else:			# Fim da batalha, vitória
@@ -310,7 +312,7 @@ while True:
 										xp=funcaoxp(xp,xp_ganho)   # Atualização da experiência										
 										print("Voce recebeu {} de experiencia, agora você tem {}".format(xp_ganho,xp))
 										time.sleep(0.5)
-										ataque2=ataque2/2
+										ataque2=ataque2/1.5
 										x=3
 										break
 
@@ -337,7 +339,7 @@ while True:
 
 
 							if critico==1:      # Caso seja um ataque crítico
-								ataque2=ataque2*2
+								ataque2=ataque2*1.5
 								critico=random.randint(1,5)
 
 							if ataque2-defesa_oponente>0:  # Verifica se o inspermon causou dano no adverário
@@ -357,7 +359,7 @@ while True:
 								print("{} deu {} de dano em {}, ele desmaiou".format(nome,ataque1-defesa_oponente,nome_oponente))  # Cálculo da vida restante
 								time.sleep(0.5)
 								print("Voce derrotou {}!" .format(nome_oponente))
-								time.sleep(0.5)
+								time.sleep(0.8)
 								xp=funcaoxp(xp,xp_ganho)   # Atualização da experiência										
 								print("Voce recebeu {} de experiencia, agora você tem {}".format(xp_ganho,xp))
 								time.sleep(0.5)
@@ -385,7 +387,7 @@ while True:
 						if critico_oponente==1:   #Ataque crítico do oponente
 							print("ATAQUE CRÍTICO")
 							time.sleep(0.5)
-							ataque_oponente=ataque_oponente*2
+							ataque_oponente=ataque_oponente*1.5
 
 							if ataque_oponente-defesa>0:
 								vida= batalha(vida, ataque_oponente, defesa)
@@ -393,19 +395,19 @@ while True:
 								if vida>0:
 									print("{} deu {} de dano em {}! Agora ele tem {} de vida".format(nome_oponente,ataque_oponente-defesa,nome,vida))
 									time.sleep(0.5)
-									ataque_oponente=ataque_oponente/2
+									ataque_oponente=ataque_oponente/1.5
 									continue
 
 								if vida<=0:
 									print("Seu Inspermón levou {} de dano, desmaiou e foi levado para o InsperCenter".format(ataque_oponente-defesa))
 									time.sleep(0.5)
 									vida=vida_inicial
-									ataque_oponente=ataque_oponente/2
+									ataque_oponente=ataque_oponente/1.5
 									break	
 
 							if ataque_oponente-defesa<=0:
 								print("Seu Inspermón não levou dano")
-								ataque_oponente=ataque_oponente/2
+								ataque_oponente=ataque_oponente/1.5
 								continue
 
 						if critico_oponente!=1:
@@ -442,13 +444,13 @@ while True:
 			def funcao_evolucao(nome,pokemon,evolucao):
 
 				print("{} está se preparando para evoluir".format(nome))
-				time.sleep(0.5)
+				time.sleep(1)
 				print(".")
-				time.sleep(0.5)
+				time.sleep(1)
 				print(".")
-				time.sleep(0.5)
+				time.sleep(1)
 				print(".")
-				time.sleep(0.5)
+				time.sleep(1)
 				print("{} evoluiu para {}!".format(nome, evolucao))
 
 				ataque1=dicionario_inspermons_iniciais[evolucao]["ataque"]
@@ -459,10 +461,10 @@ while True:
 
 				vida = vida_inicial
 
-				time.sleep(0.5)
+				time.sleep(1)
 				print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
 
-				return(ataque1,defesa,vida_inicial)
+				return(ataque1,defesa,vida_inicial,nome)
 
 				time.sleep(0.5)
 				print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))
@@ -473,15 +475,15 @@ while True:
 				evolucao = 2
 
 				if index == 1:
-					ataque1,defesa,vida_inicial=funcao_evolucao(nome,"Sharmander","Sharmilion")
+					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Sharmander","Sharmilion")
 					nome = MudaNome(nome)
 
 				if index == 2:
-					ataque1,defesa,vida_inicial=funcao_evolucao(nome,"Skuirtle","Uarturtle")
+					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Skuirtle","Uarturtle")
 					nome = MudaNome(nome)
 
 				if index == 3:
-					ataque1,defesa,vida_inicial=funcao_evolucao(nome,"Bulbatauro","Ivitauro")
+					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Bulbatauro","Ivitauro")
 					nome = MudaNome(nome)
 
 			elif evolucao == 2 and xp >= 500:
@@ -489,13 +491,13 @@ while True:
 				evolucao = 3
 
 				if index == 1:
-					ataque1,defesa,vida_inicial=funcao_evolucao(nome,"Sharmilion","Cheirazard")
+					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Sharmilion","Cheirazard")
 					nome = MudaNome(nome)
 				if index == 2:
-					ataque1,defesa,vida_inicial=funcao_evolucao(nome,"Uarturtle","Blastoide")
+					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Uarturtle","Blastoide")
 					nome = MudaNome(nome)
 				if index == 3:
-					ataque1,defesa,vida_inicial=funcao_evolucao(nome,"Bulbatauro","Venustauro")
+					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Bulbatauro","Venustauro")
 					nome = MudaNome(nome)
 
 			continue
@@ -504,6 +506,23 @@ while True:
 			print("Digite um comando válido.")
 			time.sleep(0.5)
 
+	while True:
+		salvar_jogo=input("Deseja salvar o jogo? ")
+		salvar_jogo=salvar_jogo.lower()
+
+		if salvar_jogo in sim:
+			salvo=open("jogo_salvo.py","w")
+			salvo.write("import pickle\n")
+			salvo.write("inspermon: {}\n".format(nome))
+			salvo.write("ataque: {}\n".format(ataque1))
+			salvo.write("defesa: {}\n" .format(defesa))
+			salvo.write("vida: {}\n".format(vida))
+			salvo.write("experiência: {}\n" .format(xp))
+			#salvo.write("dinheiro: {}".format(dinheiro))
+			salvo.close()
+			break
+		if salvar_jogo in nao:
+			break
 	print("Até a proxima!")       # Fim do jogo
 
 	break
