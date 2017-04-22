@@ -520,6 +520,8 @@ while True:
 			salvo.write("experiência: {}\n" .format(xp))
 			#salvo.write("dinheiro: {}".format(dinheiro))
 			salvo.close()
+			time.sleep(0.5)
+			print("Jogo salvo com sucesso")
 			break
 		if salvar_jogo in nao:
 			break
