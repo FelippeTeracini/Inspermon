@@ -12,6 +12,15 @@ def funcaoxp(xp,xp_ganho):
 	xp=xp+xp_ganho
 	return xp
 
+def pokemon_inicial(lista,pokemon,Nindex):
+	ataque1=lista[pokemon]["ataque"]
+	defesa=lista[pokemon]["defesa"]
+	vida_inicial=lista[pokemon]["vida"]
+	index=Nindex
+	evolucao=1
+	return(ataque1,defesa,vida_inicial,index,evolucao)
+
+
 def MudaNome(nome):
 	while True:
 
@@ -55,67 +64,82 @@ xp = 190
 
 while True:
 	print("Bem vindo ao Inspermón")  # Início do jogo
-
-	'''abrir_salvo=input("Deseja abrir jogo salvo? \n ")
-
-	if abrir_salvo in sim:
-		with open("jogo_salvo","rb") as arquivo_jogo_salvo:
-			dados_salvos=pickle.load(arquivo_jogo_salvo)
-			
-		nome=dados_salvos["nome"]
-		ataque1=dados_salvos["ataque"]
-		defesa=dados_salvos["defesa"]
-		vida_inicial=dados_salvos["vida"]
-		xp=dados_salvos["xp"]
-
-	time.sleep(0.5)'''
-	while True:
-
-
-
+	time.sleep(1)
 #    ==============================    Inspermon Inicial    ====================================
 
-		def pokemon_inicial(lista,pokemon,Nindex):
-			ataque1=lista[pokemon]["ataque"]
-			defesa=lista[pokemon]["defesa"]
-			vida_inicial=lista[pokemon]["vida"]
-			index=Nindex
-			evolucao=1
-			return(ataque1,defesa,vida_inicial,index,evolucao)
+	while True:
+		while True:
 
-		print("Com qual Inspermón você deseja iniciar?")     # apresentação dos inspermons
-		time.sleep(0.5)
-		print("- Sharmander: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Sharmander"]["ataque"],dicionario_inspermons_iniciais["Sharmander"]["defesa"],dicionario_inspermons_iniciais["Sharmander"]["vida"]))
-		time.sleep(0.5)		
-		print("- Skuirtle: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Skuirtle"]["ataque"],dicionario_inspermons_iniciais["Skuirtle"]["defesa"],dicionario_inspermons_iniciais["Skuirtle"]["vida"]))
-		time.sleep(0.5)		
-		print("- Bulbatauro: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Bulbatauro"]["ataque"],dicionario_inspermons_iniciais["Bulbatauro"]["defesa"],dicionario_inspermons_iniciais["Bulbatauro"]["vida"]))
-		time.sleep(0.5)	
-
-
-		inspermon_inicial = input("->")   		# definição de qual inspermon sera o escolhido
-		inspermon_inicial = inspermon_inicial.lower()
-
-
-		if inspermon_inicial == "sharmander":
-			ataque1,defesa,vida_inicial,index,evolucao=pokemon_inicial(dicionario_inspermons_iniciais,"Sharmander",1)
-			nome="Sharmander"
-			break
-
-		if inspermon_inicial == "skuirtle":
-			ataque1,defesa,vida_inicial,index,evolucao=pokemon_inicial(dicionario_inspermons_iniciais,"Skuirtle",2)
-			nome="Skuirtle"
-
-			break
-		elif inspermon_inicial == "bulbatauro":
-			ataque1,defesa,vida_inicial,index,evolucao=pokemon_inicial(dicionario_inspermons_iniciais,"Bulbatauro",3)
-			nome="Bulbatauro"
-			break
-
-		else:
-			print("Digite um Inspermón válido")
+			abrir_salvo=input("Deseja abrir jogo salvo? \n ")  #Verifica se o usário quer abrir um jogo salvo
 			time.sleep(0.5)
-			continue
+
+			if abrir_salvo in sim:
+				
+				try:
+					salvo=pickle.load(open("jogo_salvo","rb"))  # Traz o jogo salvo com os dados guardados
+					nome=salvo["Inspermon"][0]
+					ataque1=salvo["Inspermon"][1]
+					defesa=salvo["Inspermon"][2]
+					vida_inicial=salvo["Inspermon"][3]
+					xp=salvo["Inspermon"][4]
+					dinheiro=salvo["Inspermon"][5]
+					carregado=sim
+					print("Carregando dados")
+					time.sleep(2)
+					break
+
+				except:
+					print("Não existe nenhum jogo salvo")  # Aviso caso não exista jogo salvo
+					time.sleep(0.5)
+					carregado=nao
+					break
+
+			if abrir_salvo in nao:	
+				carregado=nao	
+				break
+
+			else:
+				print("Digite um comando válido: sim ou não")
+				continue
+
+		if carregado==sim: # Chega se houve o carregamento de dados para pular o processo de escolha de um inspermon
+			break
+
+		if carregado==nao:
+
+			print("Com qual Inspermón você deseja iniciar?")     # apresentação dos inspermons
+			time.sleep(0.5)
+			print("- Sharmander: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Sharmander"]["ataque"],dicionario_inspermons_iniciais["Sharmander"]["defesa"],dicionario_inspermons_iniciais["Sharmander"]["vida"]))
+			time.sleep(0.5)		
+			print("- Skuirtle: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Skuirtle"]["ataque"],dicionario_inspermons_iniciais["Skuirtle"]["defesa"],dicionario_inspermons_iniciais["Skuirtle"]["vida"]))
+			time.sleep(0.5)		
+			print("- Bulbatauro: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Bulbatauro"]["ataque"],dicionario_inspermons_iniciais["Bulbatauro"]["defesa"],dicionario_inspermons_iniciais["Bulbatauro"]["vida"]))
+			time.sleep(0.5)	
+
+
+			inspermon_inicial = input("->")   		# definição de qual inspermon sera o escolhido
+			inspermon_inicial = inspermon_inicial.lower()
+
+
+			if inspermon_inicial == "sharmander":
+				ataque1,defesa,vida_inicial,index,evolucao=pokemon_inicial(dicionario_inspermons_iniciais,"Sharmander",1)
+				nome="Sharmander"
+				break
+
+			if inspermon_inicial == "skuirtle":
+				ataque1,defesa,vida_inicial,index,evolucao=pokemon_inicial(dicionario_inspermons_iniciais,"Skuirtle",2)
+				nome="Skuirtle"
+
+				break
+			elif inspermon_inicial == "bulbatauro":
+				ataque1,defesa,vida_inicial,index,evolucao=pokemon_inicial(dicionario_inspermons_iniciais,"Bulbatauro",3)
+				nome="Bulbatauro"
+				break
+
+			else:
+				print("Digite um Inspermón válido")
+				time.sleep(0.5)
+				continue
 
 	nome=MudaNome(nome)
 
@@ -143,108 +167,97 @@ while True:
 			break
 
 		elif comando == "loja":
+
+			def compra(compra,quantidade, dinheiro, aumenta):
+
+				if dinheiro-quantidade*10<0:
+					print("Infelizmente você não tem inspermoedas suficientes para comprar esta item")
+									
+				elif dinheiro>=quantidade*10:
+					aumenta=aumenta+quantidade
+					dinheiro=dinheiro-quantidade						
+
+				return (aumenta, dinheiro)
+
 			while True:
 				time.sleep(0.5)
-				compra=input("Você está na loja, o que quer comprar: ataque, defesa ou vida? Você também pode sair digitando: sair\n ")
+				compra=input("Você está na loja e tem {} inspermoedas, o que quer comprar: ataque, defesa ou vida? Você também pode sair digitando: sair\n ".format(dinheiro))
 
 			
 				if compra=="ataque":
 					time.sleep(1)
 					print("Você pode aumentar seu ataque em 1 por 10 inpermoedas, 5 por 50 inpermoedas ou 10 por 100 inpermoedas")
-					compra_ataque=input("Quanto deseja comprar?\n ")
-					time.sleep(1)
 
 					while True:
-						if compra_ataque==1 and dinheiro>=10:
-							print("Seu ataque aumentou 1 ponto")
-							ataque1=ataque1+1
-							dinheiro=dinheiro-10
+						compra_ataque=input("Quanto deseja comprar?\n ")
+						time.sleep(1)
+		
+						if compra_ataque=="1":
+							ataque1,dinheiro=compra(compra_ataque,1,dinheiro,ataque1)
+							print("Seu ataque aumentou 1 ponto, agora seu Inspermón tem {}".format(ataque1))
 							break
-
-						elif compra_ataque==5 and dinheiro>=50:
-							print("Seu ataque aumentou 5 pontos")
-							ataque1=ataque1+5
-							dinheiro=dinheiro-50
+						if compra_ataque=="5":
+							ataque1,dinheiro=compra(compra_ataque,5,dinheiro,ataque1)
+							print("Seu ataque aumentou 5 pontos, agora seu Inspermón tem {}".format(ataque1))
 							break
-
-						if compra_ataque==1 and dinheiro>=100:
-							print("Seu ataque aumentou 10 pontos")
-							ataque1=ataque1+10
-							dinheiro=dinheiro-100
+						if compra_ataque=="10":
+							ataque1,dinheiro=compra(compra_ataque,10,dinheiro,ataque1)
+							print("Seu ataque aumentou 10 pontos, agora seu Inspermón tem {}".format(ataque1))
 							break
-
-						if compra_ataque!=1 or compra_ataque!=5 or compra_ataque!=10:
-							print("Digite um comando válido")
-							continue
 						else:
-							print("Infelizmente você não tem inspermoedas suficientes para comprar este item")
-							break
+							print("Digite um comando válido")
+							time.sleep(0.5)
+							continue
 
 				elif compra=="defesa":
 					time.sleep(1)
 					print("Você pode aumentar sua defesa em 1 por 10 inpermoedas, 5 por 50 inpermoedas ou 10 por 100 inpermoedas")
-					compra_defesa=input("Quanto deseja comprar?\n ")
-					time.sleep(1)
-
+					
 					while True:
-						if compra_defesa==1 and dinheiro>=10:
-							print("Sua defesa aumentou 1 ponto")
-							defesa=defesa+1
-							dinheiro=dinheiro-10
+						compra_defesa=input("Quanto deseja comprar?\n ")
+						time.sleep(1)
+		
+						if compra_defesa=="1":
+							defesa,dinheiro=compra(compra_defesa,1,dinheiro,defesa)
+							print("Sua defesa aumentou 1 ponto, agora seu Inspermón tem {}".format(defesa))
 							break
-
-						if compra_defesa==5 and dinheiro>=50:
-							print("Sua defesa aumentou 5 pontos")
-							defesa=defesa+5
-							dinheiro=dinheiro-50
+						if compra_defesa=="5":
+							defesa,dinheiro=compra(compra_defesa,5,dinheiro,defesa)
+							print("Sua defesa aumentou 5 pontos, agora seu Inspermón tem {}".format(defesa))
 							break
-
-						if compra_defesa==1 and dinheiro>=100:
-							print("Sua defesa aumentou 10 pontos")
-							defesa=defesa+10
-							dinheiro=dinheiro-100
+						if compra_defesa=="10":
+							defesa,dinheiro=compra(compra_defesa,10,dinheiro,defesa)
+							print("Sua defesa aumentou 10 pontos, agora seu Inspermón tem {}".format(defesa))
 							break
-
-						if compra_defesa!=1 or compra_defesa!=5 or compra_defesa!=10:
-							print("Digite um comando válido")
-							continue
-
 						else:
-							print("Infelizmente você não tem inspermoedas suficientes para comprar este item")
-							break
+							print("Digite um comando válido")
+							time.sleep(0.5)
+							continue
 
 				elif compra=="vida":
 					time.sleep(1)
 					print("Você pode aumentar sua vida em 1 por 10 inpermoedas, 5 por 50 inpermoedas ou 10 por 100 inpermoedas")
-					compra_vida=input("Quanto deseja comprar?\n ")
-					time.sleep(1)
-
+					
 					while True:
-						if compra_vida==1 and dinheiro>=10:
-							print("Sua vida aumentou 1 ponto")
-							vida_inicial=vida_inicial+1
-							dinheiro=dinheiro-10
+						compra_vida=input("Quanto deseja comprar?\n ")
+						time.sleep(1)
+		
+						if compra_vida=="1":
+							vida_inicial,dinheiro=compra(compra_vida,1,dinheiro,vida_inicial)
+							print("Sua vida aumentou 1 ponto, agora seu Inspermón tem {}".format(vida_inicial))
 							break
-
-						if compra_vida==5 and dinheiro>=50:
-							print("Sua vida aumentou 5 pontos")
-							vida_inicial=vida_inicial+5
-							dinheiro=dinheiro-50
+						if compra_vida=="5":
+							vida_inicial,dinheiro=compra(compra_vida,5,dinheiro,vida_inicial)
+							print("Sua vida aumentou 5 pontos,, agora seu Inspermón tem {}".format(vida_inicial))
 							break
-
-						if compra_vida==1 and dinheiro>=100:
-							print("Sua vida aumentou 1 ponto")
-							vida_inicial=vida_inicial+10
-							dinheiro=dinheiro-100
+						if compra_vida=="10":
+							vida_inicial,dinheiro=compra(compra_vida,10,dinheiro,vida_inicial)
+							print("Sua vida aumentou 10 pontos, agora seu Inspermón tem {}".format(vida_inicial))
 							break
-
-						if compra_vida!=1 or compra_vida!=5 or compra_vida!=10:
-							print("Digite um comando válido")
-							continue
-
 						else:
-							print("Infelizmente você não tem inspermoedas suficientes para comprar esta item")
-							break
+							print("Digite um comando válido")
+							time.sleep(0.5)
+							continue
 
 				elif compra=="sair":
 					time.sleep(0.5)
@@ -640,16 +653,9 @@ while True:
 		salvar_jogo=salvar_jogo.lower()
 
 		if salvar_jogo in sim:
-			salvo=open("jogo_salvo.py","w")
-			salvo.write("import pickle\n")
-			salvo.write("jogo_salvo= {\n")
-			salvo.write("inspermon= {}\n".format(nome))
-			salvo.write("ataque= {}\n".format(ataque1))
-			salvo.write("defesa= {}\n" .format(defesa))
-			salvo.write("vida= {}\n".format(vida))
-			salvo.write("xp= {}\n" .format(xp))
-			#salvo.write("dinheiro: {}".format(dinheiro))
-			salvo.close()
+			dados= open("jogo_salvo",'wb') 
+			pickle.dump({"Inspermon" : [nome, ataque1, defesa, vida_inicial, xp, dinheiro]}, dados)
+			dados.close()
 			time.sleep(0.5)
 			print("Jogo salvo com sucesso")
 			break
