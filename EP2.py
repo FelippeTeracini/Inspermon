@@ -61,6 +61,10 @@ with open("inspermons_lendarios.pickle","rb") as arquivo_inspermons_lendarios:
 
 
 xp = 190
+lista_faceis = ["Pikaxu","Tatata","Pigey","Dogerpie","Magipark","Sharmander","Skuirtle","Bulbatauro"]
+lista_medios = ["Machups","Geogrude","Goalbate","Harboqui","Bidriu","Sharmilion","Ivitauro","Uarturtle"]
+lista_dificeis = ["Nidorrei","Esnorlacs","Vaporneon","Dragoday","Arcanove","Cheirazard","Venustauro","Blastoide"]
+lista_lendarios = ["Articuno","Zapdos","Moltres"]
 
 while True:
 	print("Bem vindo ao Inspermón")  # Início do jogo
@@ -83,6 +87,7 @@ while True:
 					vida_inicial=salvo["Inspermon"][3]
 					xp=salvo["Inspermon"][4]
 					dinheiro=salvo["Inspermon"][5]
+					lista_nomes = salvo["Inspermon"][6]
 					carregado=sim
 					print("Carregando dados")
 					time.sleep(2)
@@ -107,6 +112,8 @@ while True:
 
 		if carregado==nao:
 
+			lista_nomes = []
+
 			print("Com qual Inspermón você deseja iniciar?")     # apresentação dos inspermons
 			time.sleep(0.5)
 			print("- Sharmander: Ataque = {} , Defesa = {} , Vida = {}".format(dicionario_inspermons_iniciais["Sharmander"]["ataque"],dicionario_inspermons_iniciais["Sharmander"]["defesa"],dicionario_inspermons_iniciais["Sharmander"]["vida"]))
@@ -124,16 +131,18 @@ while True:
 			if inspermon_inicial == "sharmander":
 				ataque1,defesa,vida_inicial,index,evolucao=pokemon_inicial(dicionario_inspermons_iniciais,"Sharmander",1)
 				nome="Sharmander"
+				lista_nomes.append("Sharmander")
 				break
 
 			if inspermon_inicial == "skuirtle":
 				ataque1,defesa,vida_inicial,index,evolucao=pokemon_inicial(dicionario_inspermons_iniciais,"Skuirtle",2)
 				nome="Skuirtle"
-
+				lista_nomes.append("Skuirtle")
 				break
 			elif inspermon_inicial == "bulbatauro":
 				ataque1,defesa,vida_inicial,index,evolucao=pokemon_inicial(dicionario_inspermons_iniciais,"Bulbatauro",3)
 				nome="Bulbatauro"
+				lista_nomes.append("Bulbatauro")
 				break
 
 			else:
@@ -152,7 +161,7 @@ while True:
 #    ==========================================     Início do jogo      ================================================
 	while True:  # Jogo
 		vida = vida_inicial
-		comando = input("O que você deseja fazer? (Passear, Loja ou Dormir):\n ")  # Pergunta sobre o que o usuário deseja fazer
+		comando = input("O que você deseja fazer? (Passear, Loja, Dormir ou Insperdex?):\n ")  # Pergunta sobre o que o usuário deseja fazer
 		comando = comando.lower()
 
 		def escolha_adversário(lista):
@@ -165,6 +174,47 @@ while True:
 
 		if comando == "dormir":   # Dormir: para o jogo e salva os dados
 			break
+
+		elif comando == "insperdex":
+
+			print("=====Insperdex=====")
+
+			for i in lista_nomes:
+
+				if i in lista_faceis:
+
+					print("{}: ".format(i),end="")
+					print("Ataque: {}, ".format(dicionario_inspermons_faceis[i]["ataque"]),end="")
+					print("Defesa: {}, ".format(dicionario_inspermons_faceis[i]["defesa"]),end="")
+					print("Vida: {},".format(dicionario_inspermons_faceis[i]["vida"]))
+
+				elif i in lista_medios:
+
+					print("{}: ".format(i),end="")
+					print("Ataque: {}, ".format(dicionario_inspermons_medios[i]["ataque"]),end="")
+					print("Defesa: {}, ".format(dicionario_inspermons_medios[i]["defesa"]),end="")
+					print("Vida: {},".format(dicionario_inspermons_medios[i]["vida"]))
+
+				elif i in lista_dificeis:
+
+					print("{}: ".format(i),end="")
+					print("Ataque: {}, ".format(dicionario_inspermons_dificeis[i]["ataque"]),end="")
+					print("Defesa: {}, ".format(dicionario_inspermons_dificeis[i]["defesa"]),end="")
+					print("Vida: {},".format(dicionario_inspermons_dificeis[i]["vida"]))
+
+				elif i in lista_lendarios:
+
+					print("{}: ".format(i),end="")
+					print("Ataque: {}, ".format(dicionario_inspermons_lendarios[i]["ataque"]),end="")
+					print("Defesa: {}, ".format(dicionario_inspermons_lendarios[i]["defesa"]),end="")
+					print("Vida: {},".format(dicionario_inspermons_lendarios[i]["vida"]))
+
+			print("===================")
+
+			continue
+
+
+
 
 		elif comando == "loja":
 
@@ -314,6 +364,10 @@ while True:
 
 			print("Este Inspermón possui os seguintes atributos: Ataque: {}, Defesa: {} e Vida: {}".format(ataque_oponente,defesa_oponente,vida_oponente))
 			time.sleep(1)
+
+			if nome_oponente not in lista_nomes:
+
+				lista_nomes.append(nome_oponente)
 
 
 #       =================================================    Batalha    ===============================================
@@ -617,15 +671,21 @@ while True:
 
 				if index == 1:
 					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Sharmander","Sharmilion")
-					nome = MudaNome(nome)
+					muda_nome = MudaNome(nome)
+					nome = muda_nome
+					lista_nomes.append("Sharmilion")
 
 				if index == 2:
 					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Skuirtle","Uarturtle")
-					nome = MudaNome(nome)
+					muda_nome = MudaNome(nome)
+					nome = muda_nome
+					lista_nomes.append("Uarturtle")
 
 				if index == 3:
 					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Bulbatauro","Ivitauro")
-					nome = MudaNome(nome)
+					muda_nome = MudaNome(nome)
+					nome = muda_nome
+					lista_nomes.append("Ivitauro")
 
 			elif evolucao == 2 and xp >= 500:
 				
@@ -633,13 +693,19 @@ while True:
 
 				if index == 1:
 					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Sharmilion","Cheirazard")
-					nome = MudaNome(nome)
+					muda_nome = MudaNome(nome)
+					nome = muda_nome
+					lista_nomes.append("Cheirazard")
 				if index == 2:
 					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Uarturtle","Blastoide")
-					nome = MudaNome(nome)
+					muda_nome = MudaNome(nome)
+					nome = muda_nome
+					lista_nomes.append("Blastoise")
 				if index == 3:
 					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Bulbatauro","Venustauro")
-					nome = MudaNome(nome)
+					muda_nome = MudaNome(nome)
+					nome = muda_nome
+					lista_nomes.append("Venustauro")
 
 			continue
 			
@@ -654,7 +720,7 @@ while True:
 
 		if salvar_jogo in sim:
 			dados= open("jogo_salvo",'wb') 
-			pickle.dump({"Inspermon" : [nome, ataque1, defesa, vida_inicial, xp, dinheiro]}, dados)
+			pickle.dump({"Inspermon" : [nome, ataque1, defesa, vida_inicial, xp, dinheiro, lista_nomes]}, dados)
 			dados.close()
 			time.sleep(0.5)
 			print("Jogo salvo com sucesso")
