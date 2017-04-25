@@ -39,7 +39,9 @@ def MudaNome(nome):
 		else:
 			print("Digite um comando válido (Sim ou Não)")
 			continue
+
 		nome = nome
+
 	return nome
 
 
@@ -60,7 +62,6 @@ with open("inspermons_lendarios.pickle","rb") as arquivo_inspermons_lendarios:
 		dicionario_inspermons_lendarios=pickle.load(arquivo_inspermons_lendarios)
 
 
-xp = 190
 lista_faceis = ["Pikaxu","Tatata","Pigey","Dogerpie","Magipark","Sharmander","Skuirtle","Bulbatauro"]
 lista_medios = ["Machups","Geogrude","Goalbate","Harboqui","Bidriu","Sharmilion","Ivitauro","Uarturtle"]
 lista_dificeis = ["Nidorrei","Esnorlacs","Vaporneon","Dragoday","Arcanove","Cheirazard","Venustauro","Blastoide"]
@@ -88,6 +89,9 @@ while True:
 					xp=salvo["Inspermon"][4]
 					dinheiro=salvo["Inspermon"][5]
 					lista_nomes = salvo["Inspermon"][6]
+					ataque_extra = salvo["Inspermon"][7]
+					defesa_extra = salvo["Inspermon"][8]
+					vida_extra = salvo["Inspermon"][9]
 					carregado=sim
 					print("Carregando dados")
 					time.sleep(2)
@@ -111,6 +115,14 @@ while True:
 			break
 
 		if carregado==nao:
+
+			ataque_extra = 0
+			defesa_extra = 0
+			vida_extra = 0
+
+			xp = 0
+
+			dinheiro = 0
 
 			lista_nomes = []
 
@@ -157,7 +169,6 @@ while True:
 	time.sleep(0.5)
 	print("Seu Inspermón tem os seguintes atributos: Ataque:{}, Defesa:{}, Vida:{}".format(ataque1,defesa,vida))   # Apresentação do Inspermon
 	time.sleep(0.5)
-	dinheiro=100000
 #    ==========================================     Início do jogo      ================================================
 	while True:  # Jogo
 		vida = vida_inicial
@@ -218,17 +229,6 @@ while True:
 
 		elif comando == "loja":
 
-			def compra(compra,quantidade, dinheiro, aumenta):
-
-				if dinheiro-quantidade*10<0:
-					print("Infelizmente você não tem inspermoedas suficientes para comprar esta item")
-									
-				elif dinheiro>=quantidade*10:
-					aumenta=aumenta+quantidade
-					dinheiro=dinheiro-quantidade						
-
-				return (aumenta, dinheiro)
-
 			while True:
 				time.sleep(0.5)
 				compra=input("Você está na loja e tem {} inspermoedas, o que quer comprar: ataque, defesa ou vida? Você também pode sair digitando: sair\n ".format(dinheiro))
@@ -236,23 +236,52 @@ while True:
 			
 				if compra=="ataque":
 					time.sleep(1)
-					print("Você pode aumentar seu ataque em 1 por 10 inpermoedas, 5 por 50 inpermoedas ou 10 por 100 inpermoedas")
+					print("Você pode aumentar seu ataque em 1 por 10 inpermoedas, 5 por 50 inpermoedas ou 10 por 100 inpermoedas. Você também pode sair digitando: sair")
 
 					while True:
 						compra_ataque=input("Quanto deseja comprar?\n ")
 						time.sleep(1)
 		
 						if compra_ataque=="1":
-							ataque1,dinheiro=compra(compra_ataque,1,dinheiro,ataque1)
-							print("Seu ataque aumentou 1 ponto, agora seu Inspermón tem {}".format(ataque1))
-							break
+
+							if dinheiro >= 10:
+								ataque_extra = ataque_extra + 1
+								ataque1 = ataque1 + 1
+								print("Agora o ataque do seu Inspermon é: {}".format(ataque1))
+								dinheiro = dinheiro - 10
+								print("Seu saldo é de {} Inspermoedas".format(dinheiro))
+								break
+							else:
+								print("Infelizmente você não tem inspermoedas suficientes para comprar esta item")
+								continue
+							
 						if compra_ataque=="5":
-							ataque1,dinheiro=compra(compra_ataque,5,dinheiro,ataque1)
-							print("Seu ataque aumentou 5 pontos, agora seu Inspermón tem {}".format(ataque1))
-							break
+							
+							if dinheiro >= 50:
+								ataque_extra = ataque_extra + 5
+								ataque1 = ataque1 + 5
+								print("Agora o ataque do seu Inspermon é: {}".format(ataque1))
+								dinheiro = dinheiro - 50
+								print("Seu saldo é de {} Inspermoedas".format(dinheiro))
+								break
+							else:
+								print("Infelizmente você não tem inspermoedas suficientes para comprar esta item")
+								continue
+
 						if compra_ataque=="10":
-							ataque1,dinheiro=compra(compra_ataque,10,dinheiro,ataque1)
-							print("Seu ataque aumentou 10 pontos, agora seu Inspermón tem {}".format(ataque1))
+							
+							if dinheiro >= 100:
+								ataque_extra = ataque_extra + 10
+								ataque1 = ataque1 + 10
+								print("Agora o ataque do seu Inspermon é: {}".format(ataque1))
+								dinheiro = dinheiro - 100
+								print("Seu saldo é de {} Inspermoedas".format(dinheiro))
+								break
+							else:
+								print("Infelizmente você não tem inspermoedas suficientes para comprar esta item")
+								continue
+
+						if compra_ataque=="sair":
 							break
 						else:
 							print("Digite um comando válido")
@@ -261,23 +290,52 @@ while True:
 
 				elif compra=="defesa":
 					time.sleep(1)
-					print("Você pode aumentar sua defesa em 1 por 10 inpermoedas, 5 por 50 inpermoedas ou 10 por 100 inpermoedas")
+					print("Você pode aumentar sua defesa em 1 por 10 inpermoedas, 5 por 50 inpermoedas ou 10 por 100 inpermoedas. Você também pode sair digitando: sair")
 					
 					while True:
 						compra_defesa=input("Quanto deseja comprar?\n ")
 						time.sleep(1)
 		
 						if compra_defesa=="1":
-							defesa,dinheiro=compra(compra_defesa,1,dinheiro,defesa)
-							print("Sua defesa aumentou 1 ponto, agora seu Inspermón tem {}".format(defesa))
-							break
+							
+							if dinheiro >= 10:
+								defesa_extra = defesa_extra + 1
+								defesa = defesa + 1
+								print("Agora a defesa do seu Inspermon é: {}".format(defesa))
+								dinheiro = dinheiro - 10
+								print("Seu saldo é de {} Inspermoedas".format(dinheiro))
+								break
+							else:
+								print("Infelizmente você não tem inspermoedas suficientes para comprar esta item")
+								continue
+
 						if compra_defesa=="5":
-							defesa,dinheiro=compra(compra_defesa,5,dinheiro,defesa)
-							print("Sua defesa aumentou 5 pontos, agora seu Inspermón tem {}".format(defesa))
-							break
+							
+							if dinheiro >= 50:
+								defesa_extra = defesa_extra + 5
+								defesa = defesa + 5
+								print("Agora a defesa do seu Inspermon é: {}".format(defesa))
+								dinheiro = dinheiro - 50
+								print("Seu saldo é de {} Inspermoedas".format(dinheiro))
+								break
+							else:
+								print("Infelizmente você não tem inspermoedas suficientes para comprar esta item")
+								continue
+
 						if compra_defesa=="10":
-							defesa,dinheiro=compra(compra_defesa,10,dinheiro,defesa)
-							print("Sua defesa aumentou 10 pontos, agora seu Inspermón tem {}".format(defesa))
+							
+							if dinheiro >= 100:
+								defesa_extra = defesa_extra + 10
+								defesa = defesa + 10
+								print("Agora a defesa do seu Inspermon é: {}".format(defesa))
+								dinheiro = dinheiro - 100
+								print("Seu saldo é de {} Inspermoedas".format(dinheiro))
+								break
+							else:
+								print("Infelizmente você não tem inspermoedas suficientes para comprar esta item")
+								continue
+
+						if compra_defesa=="sair":
 							break
 						else:
 							print("Digite um comando válido")
@@ -286,23 +344,52 @@ while True:
 
 				elif compra=="vida":
 					time.sleep(1)
-					print("Você pode aumentar sua vida em 1 por 10 inpermoedas, 5 por 50 inpermoedas ou 10 por 100 inpermoedas")
+					print("Você pode aumentar sua vida em 1 por 10 inpermoedas, 5 por 50 inpermoedas ou 10 por 100 inpermoedas. Você também pode sair digitando: sair")
 					
 					while True:
 						compra_vida=input("Quanto deseja comprar?\n ")
 						time.sleep(1)
 		
 						if compra_vida=="1":
-							vida_inicial,dinheiro=compra(compra_vida,1,dinheiro,vida_inicial)
-							print("Sua vida aumentou 1 ponto, agora seu Inspermón tem {}".format(vida_inicial))
-							break
+							
+							if dinheiro >= 10:
+								vida_extra = vida_extra + 1
+								vida = vida + 1
+								print("Agora a vida do seu Inspermon é: {}".format(vida))
+								dinheiro = dinheiro - 10
+								print("Seu saldo é de {} Inspermoedas".format(dinheiro))
+								break
+							else:
+								print("Infelizmente você não tem inspermoedas suficientes para comprar esta item")
+								continue
+
 						if compra_vida=="5":
-							vida_inicial,dinheiro=compra(compra_vida,5,dinheiro,vida_inicial)
-							print("Sua vida aumentou 5 pontos,, agora seu Inspermón tem {}".format(vida_inicial))
-							break
+							
+							if dinheiro >= 50:
+								vida_extra = vida_extra + 5
+								vida = vida + 5
+								print("Agora a vida do seu Inspermon é: {}".format(vida))
+								dinheiro = dinheiro - 50
+								print("Seu saldo é de {} Inspermoedas".format(dinheiro))
+								break
+							else:
+								print("Infelizmente você não tem inspermoedas suficientes para comprar esta item")
+								continue
+
 						if compra_vida=="10":
-							vida_inicial,dinheiro=compra(compra_vida,10,dinheiro,vida_inicial)
-							print("Sua vida aumentou 10 pontos, agora seu Inspermón tem {}".format(vida_inicial))
+							
+							if dinheiro >= 100:
+								vida_extra = vida_extra + 10
+								vida = vida + 10
+								print("Agora a vida do seu Inspermon é: {}".format(vida))
+								dinheiro = dinheiro - 100
+								print("Seu saldo é de {} Inspermoedas".format(dinheiro))
+								break
+							else:
+								print("Infelizmente você não tem inspermoedas suficientes para comprar esta item")
+								continue
+
+						if compra_vida=="sair":
 							break
 						else:
 							print("Digite um comando válido")
@@ -377,22 +464,29 @@ while True:
 					x=2
 					if evolucao == 1:
 						xp_ganho=10
+						dinheiro_ganho = 2
 
 					elif evolucao == 2:
 						if chance_2 == 1:
 							xp_ganho = 10
+							dinheiro_ganho = 2
 						else:
 							xp_ganho = 20
+							dinheiro_ganho = 4
 
 					elif evolucao == 3:
 						if chance_3 == 1:
 							xp_ganho = 100
+							dinheiro_ganho = 20
 						elif chance_3 in chance_3_facil:
 							xp_ganho = 10
+							dinheiro_ganho = 2
 						elif chance_3 in chance_3_medio:
 							xp_ganho = 20
+							dinheiro_ganho = 4
 						else:
 							xp_ganho = 30 
+							dinheiro_ganho = 6
 
 
 					ação=input("O que você deseja fazer? (Atacar ou Fugir):\n ")   # Pergunta se deseja atacar ou fugir
@@ -446,6 +540,8 @@ while True:
 										xp=funcaoxp(xp,xp_ganho)   # Atualização da experiência										
 										print("Voce recebeu {} de experiencia, agora você tem {}".format(xp_ganho,xp))
 										time.sleep(0.5)
+										dinheiro = dinheiro + dinheiro_ganho
+										print("Voce recebeu {} Inspermoedas! Agora seu saldo é de {} Inspermoedas".format(dinheiro_ganho,dinheiro))
 										ataque1=ataque1/1.5
 										x=3
 										break
@@ -468,6 +564,8 @@ while True:
 										xp=funcaoxp(xp,xp_ganho)   # Atualização da experiência										
 										print("Voce recebeu {} de experiencia, agora você tem {}".format(xp_ganho,xp))
 										time.sleep(0.5)
+										dinheiro = dinheiro + dinheiro_ganho
+										print("Voce recebeu {} Inspermoedas! Agora seu saldo é de {} Inspermoedas".format(dinheiro_ganho,dinheiro))
 										x=3
 										break
 							else:
@@ -507,6 +605,8 @@ while True:
 										xp=funcaoxp(xp,xp_ganho)   # Atualização da experiência										
 										print("Voce recebeu {} de experiencia, agora você tem {}".format(xp_ganho,xp))
 										time.sleep(0.5)
+										dinheiro = dinheiro + dinheiro_ganho
+										print("Voce recebeu {} Inspermoedas! Agora seu saldo é de {} Inspermoedas".format(dinheiro_ganho,dinheiro))
 										ataque2=ataque2/1.5
 										x=3
 										break
@@ -529,6 +629,8 @@ while True:
 										xp=funcaoxp(xp,xp_ganho)   # Atualização da experiência										
 										print("Voce recebeu {} de experiencia, agora você tem {}".format(xp_ganho,xp))
 										time.sleep(0.5)
+										dinheiro = dinheiro + dinheiro_ganho
+										print("Voce recebeu {} Inspermoedas! Agora seu saldo é de {} Inspermoedas".format(dinheiro_ganho,dinheiro))
 										x=3
 										break
 
@@ -558,6 +660,8 @@ while True:
 								xp=funcaoxp(xp,xp_ganho)   # Atualização da experiência										
 								print("Voce recebeu {} de experiencia, agora você tem {}".format(xp_ganho,xp))
 								time.sleep(0.5)
+								dinheiro = dinheiro + dinheiro_ganho
+								print("Voce recebeu {} Inspermoedas! Agora seu saldo é de {} Inspermoedas".format(dinheiro_ganho,dinheiro))
 								x=3
 								break
 
@@ -636,7 +740,7 @@ while True:
 
 #    =================================    Evolução    ===================================
 
-			def funcao_evolucao(nome,pokemon,evolucao):
+			def funcao_evolucao(nome,pokemon,evolucao,ataque_extra):
 
 				print("{} está se preparando para evoluir".format(nome))
 				time.sleep(1)
@@ -648,7 +752,7 @@ while True:
 				time.sleep(1)
 				print("{} evoluiu para {}!".format(nome, evolucao))
 
-				ataque1=dicionario_inspermons_iniciais[evolucao]["ataque"]
+				ataque1=dicionario_inspermons_iniciais[evolucao]["ataque"] + ataque_extra
 				defesa=dicionario_inspermons_iniciais[evolucao]["defesa"]
 				vida_inicial=dicionario_inspermons_iniciais[evolucao]["vida"]
 
@@ -670,21 +774,18 @@ while True:
 				evolucao = 2
 
 				if index == 1:
-					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Sharmander","Sharmilion")
-					muda_nome = MudaNome(nome)
-					nome = muda_nome
+					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Sharmander","Sharmilion",ataque_extra)
+					nome = MudaNome(nome)
 					lista_nomes.append("Sharmilion")
 
 				if index == 2:
-					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Skuirtle","Uarturtle")
-					muda_nome = MudaNome(nome)
-					nome = muda_nome
+					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Skuirtle","Uarturtle",ataque_extra)
+					nome = MudaNome(nome)
 					lista_nomes.append("Uarturtle")
 
 				if index == 3:
-					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Bulbatauro","Ivitauro")
-					muda_nome = MudaNome(nome)
-					nome = muda_nome
+					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Bulbatauro","Ivitauro",ataque_extra)
+					nome = MudaNome(nome)
 					lista_nomes.append("Ivitauro")
 
 			elif evolucao == 2 and xp >= 500:
@@ -692,19 +793,16 @@ while True:
 				evolucao = 3
 
 				if index == 1:
-					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Sharmilion","Cheirazard")
-					muda_nome = MudaNome(nome)
-					nome = muda_nome
+					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Sharmilion","Cheirazard",ataque_extra)
+					nome = MudaNome(nome)
 					lista_nomes.append("Cheirazard")
 				if index == 2:
-					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Uarturtle","Blastoide")
-					muda_nome = MudaNome(nome)
-					nome = muda_nome
+					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Uarturtle","Blastoide",ataque_extra)
+					nome = MudaNome(nome)
 					lista_nomes.append("Blastoise")
 				if index == 3:
-					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Bulbatauro","Venustauro")
-					muda_nome = MudaNome(nome)
-					nome = muda_nome
+					ataque1,defesa,vida_inicial,nome=funcao_evolucao(nome,"Bulbatauro","Venustauro",ataque_extra)
+					nome = MudaNome(nome)
 					lista_nomes.append("Venustauro")
 
 			continue
@@ -720,7 +818,7 @@ while True:
 
 		if salvar_jogo in sim:
 			dados= open("jogo_salvo",'wb') 
-			pickle.dump({"Inspermon" : [nome, ataque1, defesa, vida_inicial, xp, dinheiro, lista_nomes]}, dados)
+			pickle.dump({"Inspermon" : [nome, ataque1, defesa, vida_inicial, xp, dinheiro, lista_nomes, ataque_extra, defesa_extra, vida_extra]}, dados)
 			dados.close()
 			time.sleep(0.5)
 			print("Jogo salvo com sucesso")
