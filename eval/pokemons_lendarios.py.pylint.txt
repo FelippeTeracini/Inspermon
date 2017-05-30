@@ -1,0 +1,157 @@
+************* Module pokemons_lendarios
+C:  2, 0: Trailing whitespace (trailing-whitespace)
+C:  4, 0: Exactly one space required before assignment
+inspermons_lendarios= {
+                    ^ (bad-whitespace)
+C:  6, 0: Wrong hanging indentation (add 3 spaces).
+	"Articuno":{
+ ^  | (bad-continuation)
+C:  7, 0: Wrong hanging indentation (add 10 spaces).
+		"ataque":80,"defesa":70,"vida":100
+  ^         | (bad-continuation)
+C:  7, 0: Exactly one space required after comma
+		"ataque":80,"defesa":70,"vida":100
+             ^ (bad-whitespace)
+C:  7, 0: Exactly one space required after comma
+		"ataque":80,"defesa":70,"vida":100
+                         ^ (bad-whitespace)
+C:  8, 0: Wrong hanging indentation.
+	},
+ ^      |   | (bad-continuation)
+C:  9, 0: Wrong hanging indentation (add 3 spaces).
+	"Zapdos":{
+ ^  | (bad-continuation)
+C: 10, 0: Wrong hanging indentation (add 10 spaces).
+		"ataque":70,"defesa":80,"vida":100
+  ^         | (bad-continuation)
+C: 10, 0: Exactly one space required after comma
+		"ataque":70,"defesa":80,"vida":100
+             ^ (bad-whitespace)
+C: 10, 0: Exactly one space required after comma
+		"ataque":70,"defesa":80,"vida":100
+                         ^ (bad-whitespace)
+C: 11, 0: Wrong hanging indentation.
+	},
+ ^      |   | (bad-continuation)
+C: 12, 0: Wrong hanging indentation (add 3 spaces).
+	"Moltres":{
+ ^  | (bad-continuation)
+C: 13, 0: Wrong hanging indentation (add 10 spaces).
+		"ataque":75,"defesa":75,"vida":100
+  ^         | (bad-continuation)
+C: 13, 0: Exactly one space required after comma
+		"ataque":75,"defesa":75,"vida":100
+             ^ (bad-whitespace)
+C: 13, 0: Exactly one space required after comma
+		"ataque":75,"defesa":75,"vida":100
+                         ^ (bad-whitespace)
+C: 14, 0: Wrong hanging indentation.
+	}
+ ^      |   | (bad-continuation)
+C: 17, 0: Exactly one space required after comma
+with open("inspermons_lendarios.pickle","wb") as arquivo_inspermons_lendarios:
+                                       ^ (bad-whitespace)
+C: 18, 0: Final newline missing (missing-final-newline)
+W: 18, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 18, 0: Exactly one space required after comma
+	pickle.dump(inspermons_lendarios,arquivo_inspermons_lendarios)
+                                 ^ (bad-whitespace)
+C:  1, 0: Missing module docstring (missing-docstring)
+C:  4, 0: Invalid constant name "inspermons_lendarios" (invalid-name)
+
+
+Report
+======
+4 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |NC         |NC         |0.00        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|method   |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|function |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |9      |47.37 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|docstring |6      |31.58 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|comment   |0      |0.00  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|empty     |4      |21.05 |NC       |NC         |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |NC       |NC         |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |NC       |NC         |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |22     |NC       |NC         |
++-----------+-------+---------+-----------+
+|refactor   |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+|warning    |1      |NC       |NC         |
++-----------+-------+---------+-----------+
+|error      |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++----------------------+------------+
+|message id            |occurrences |
++======================+============+
+|bad-whitespace        |9           |
++----------------------+------------+
+|bad-continuation      |9           |
++----------------------+------------+
+|trailing-whitespace   |1           |
++----------------------+------------+
+|mixed-indentation     |1           |
++----------------------+------------+
+|missing-final-newline |1           |
++----------------------+------------+
+|missing-docstring     |1           |
++----------------------+------------+
+|invalid-name          |1           |
++----------------------+------------+
+
+
+
+Global evaluation
+-----------------
+Your code has been rated at -47.50/10
+
