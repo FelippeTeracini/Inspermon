@@ -1,0 +1,230 @@
+************* Module pokemons_dificeis
+C:  3, 0: Exactly one space required before assignment
+inspermons_dificeis= {
+                   ^ (bad-whitespace)
+C:  4, 0: Wrong hanging indentation (add 3 spaces).
+	"Nidorrei":{
+ ^  | (bad-continuation)
+C:  5, 0: Wrong hanging indentation (add 10 spaces).
+		"ataque":35,"defesa":32,"vida":42
+  ^         | (bad-continuation)
+C:  5, 0: Exactly one space required after comma
+		"ataque":35,"defesa":32,"vida":42
+             ^ (bad-whitespace)
+C:  5, 0: Exactly one space required after comma
+		"ataque":35,"defesa":32,"vida":42
+                         ^ (bad-whitespace)
+C:  6, 0: Wrong hanging indentation.
+	},
+ ^      |   | (bad-continuation)
+C:  7, 0: Wrong hanging indentation (add 3 spaces).
+	"Esnorlacs":{
+ ^  | (bad-continuation)
+C:  8, 0: Wrong hanging indentation (add 10 spaces).
+		"ataque":30,"defesa":30,"vida":55
+  ^         | (bad-continuation)
+C:  8, 0: Exactly one space required after comma
+		"ataque":30,"defesa":30,"vida":55
+             ^ (bad-whitespace)
+C:  8, 0: Exactly one space required after comma
+		"ataque":30,"defesa":30,"vida":55
+                         ^ (bad-whitespace)
+C:  9, 0: Wrong hanging indentation.
+	},
+ ^      |   | (bad-continuation)
+C: 10, 0: Wrong hanging indentation (add 3 spaces).
+	"Vaporneon":{
+ ^  | (bad-continuation)
+C: 11, 0: Wrong hanging indentation (add 10 spaces).
+		"ataque":33,"defesa":35,"vida":44
+  ^         | (bad-continuation)
+C: 11, 0: Exactly one space required after comma
+		"ataque":33,"defesa":35,"vida":44
+             ^ (bad-whitespace)
+C: 11, 0: Exactly one space required after comma
+		"ataque":33,"defesa":35,"vida":44
+                         ^ (bad-whitespace)
+C: 12, 0: Wrong hanging indentation.
+	},
+ ^      |   | (bad-continuation)
+C: 13, 0: Wrong hanging indentation (add 3 spaces).
+	"Dragoday":{
+ ^  | (bad-continuation)
+C: 14, 0: Wrong hanging indentation (add 10 spaces).
+		"ataque":35,"defesa":34,"vida":48
+  ^         | (bad-continuation)
+C: 14, 0: Exactly one space required after comma
+		"ataque":35,"defesa":34,"vida":48
+             ^ (bad-whitespace)
+C: 14, 0: Exactly one space required after comma
+		"ataque":35,"defesa":34,"vida":48
+                         ^ (bad-whitespace)
+C: 15, 0: Wrong hanging indentation.
+	},
+ ^      |   | (bad-continuation)
+C: 16, 0: Wrong hanging indentation (add 3 spaces).
+	"Arcanove":{
+ ^  | (bad-continuation)
+C: 17, 0: Wrong hanging indentation (add 10 spaces).
+		"ataque":30,"defesa":38,"vida":45
+  ^         | (bad-continuation)
+C: 17, 0: Exactly one space required after comma
+		"ataque":30,"defesa":38,"vida":45
+             ^ (bad-whitespace)
+C: 17, 0: Exactly one space required after comma
+		"ataque":30,"defesa":38,"vida":45
+                         ^ (bad-whitespace)
+C: 18, 0: Wrong hanging indentation.
+	},
+ ^      |   | (bad-continuation)
+C: 19, 0: Wrong hanging indentation (add 3 spaces).
+	"Cheirazard":{
+ ^  | (bad-continuation)
+C: 20, 0: Wrong hanging indentation (add 10 spaces).
+		"ataque":37,"defesa":30,"vida":45
+  ^         | (bad-continuation)
+C: 20, 0: Exactly one space required after comma
+		"ataque":37,"defesa":30,"vida":45
+             ^ (bad-whitespace)
+C: 20, 0: Exactly one space required after comma
+		"ataque":37,"defesa":30,"vida":45
+                         ^ (bad-whitespace)
+C: 21, 0: Wrong hanging indentation.
+	},
+ ^      |   | (bad-continuation)
+C: 22, 0: Wrong hanging indentation (add 3 spaces).
+	"Venustauro":{
+ ^  | (bad-continuation)
+C: 23, 0: Wrong hanging indentation (add 10 spaces).
+		"ataque":33,"defesa":38,"vida":47
+  ^         | (bad-continuation)
+C: 23, 0: Exactly one space required after comma
+		"ataque":33,"defesa":38,"vida":47
+             ^ (bad-whitespace)
+C: 23, 0: Exactly one space required after comma
+		"ataque":33,"defesa":38,"vida":47
+                         ^ (bad-whitespace)
+C: 24, 0: Wrong hanging indentation.
+	},
+ ^      |   | (bad-continuation)
+C: 25, 0: Wrong hanging indentation (add 3 spaces).
+	"Blastoide":{
+ ^  | (bad-continuation)
+C: 26, 0: Wrong hanging indentation (add 10 spaces).
+		"ataque":40,"defesa":35,"vida":40
+  ^         | (bad-continuation)
+C: 26, 0: Exactly one space required after comma
+		"ataque":40,"defesa":35,"vida":40
+             ^ (bad-whitespace)
+C: 26, 0: Exactly one space required after comma
+		"ataque":40,"defesa":35,"vida":40
+                         ^ (bad-whitespace)
+C: 27, 0: Wrong hanging indentation.
+	}
+ ^      |   | (bad-continuation)
+C: 30, 0: Exactly one space required after comma
+with open("inspermons_dificeis.pickle","rb") as arquivo_inspermons_dificeis:
+                                      ^ (bad-whitespace)
+C: 31, 0: Final newline missing (missing-final-newline)
+W: 31, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 31, 0: Exactly one space required around assignment
+		dicionario_inspermons_dificeis=pickle.load(arquivo_inspermons_dificeis)
+                                ^ (bad-whitespace)
+C:  1, 0: Missing module docstring (missing-docstring)
+C:  3, 0: Invalid constant name "inspermons_dificeis" (invalid-name)
+C: 31, 2: Invalid constant name "dicionario_inspermons_dificeis" (invalid-name)
+
+
+Report
+======
+4 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |NC         |NC         |0.00        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|method   |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|function |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |14     |43.75 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|docstring |16     |50.00 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|comment   |0      |0.00  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|empty     |2      |6.25  |NC       |NC         |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |NC       |NC         |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |NC       |NC         |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |47     |NC       |NC         |
++-----------+-------+---------+-----------+
+|refactor   |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+|warning    |1      |NC       |NC         |
++-----------+-------+---------+-----------+
+|error      |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++----------------------+------------+
+|message id            |occurrences |
++======================+============+
+|bad-continuation      |24          |
++----------------------+------------+
+|bad-whitespace        |19          |
++----------------------+------------+
+|invalid-name          |2           |
++----------------------+------------+
+|mixed-indentation     |1           |
++----------------------+------------+
+|missing-final-newline |1           |
++----------------------+------------+
+|missing-docstring     |1           |
++----------------------+------------+
+
+
+
+Global evaluation
+-----------------
+Your code has been rated at -110.00/10
+
